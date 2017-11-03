@@ -45,6 +45,10 @@ final class Constants {
             " INSERT INTO ownership (id_ownership, id_companies, id_aircraft, quantity ) " +
                     " VALUES (?, ?, ?, ?) ";
 
+    static final String SELECT_ALL_AIRCRAFTS = " SELECT * from aircrafts ";
+    static final String SELECT_ALL_COMPANIES = " SELECT * from companies ";
+    static final String SELECT_ALL_OWNERSHIPS = " SELECT * from ownership ";
+
     static final String SELECT1 =   //просто соответствие самолетов компаниям
             " SELECT companies.name, companies.country, aircrafts.name,  ownership.quantity " +
                     " FROM ownership " +

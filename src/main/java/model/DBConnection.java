@@ -13,33 +13,43 @@ public class DBConnection {
     private static final String URL = "jdbc:mysql://localhost:3306/aero_db";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "15426";
-
     private static DBConnection dbConnection = null;
-    private Connection conn;
+    private Connection conn = null;
 
-    private DBConnection() {
-        try {
-            Driver drv = new FabricMySQLDriver();
-            DriverManager.registerDriver(drv);
-            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+    private DBConnection() {}
+
+
+    public static synchronized DBConnection getIstance(){
+        if ( dbConnection == null ) {
+            dbConnection = new DBConnection();
         }
+        return dbConnection;
     }
 
-    public static DBConnection getIstance(){
-        return ( dbConnection == null ) ? new DBConnection() : dbConnection;
-    }
 
     public Connection getConnection(){
-        //TODO use connection pull?
-        return conn; //TODO We should keep connection for current session?
+        if ( conn == null ) {
+            try {
+                Driver drv = new FabricMySQLDriver();
+                DriverManager.registerDriver(drv);
+                conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return conn;
     }
 
-    public void closeConnection() throws SQLException{
-        if(conn !=null) {
-            conn.close();
+
+    public void closeConnection() {
+        if (conn !=null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
