@@ -33,6 +33,9 @@ public class restoreDBServlet extends HttpServlet {
         RestoreDB.restore(conn);
 
         request.setAttribute("aircraftsArrayList", entityAircraft.selectAll(conn));
+        request.setAttribute("companiesArrayList", entityCompany.selectAll(conn));
+        request.setAttribute("ownershipsArrayList", entityOwnership.selectAll(conn));
+
         request.getRequestDispatcher("view/restore.jsp").forward(request, response);
 
 

@@ -45,12 +45,12 @@ public class entityAircraft {
 
     public static List<entityAircraft> selectAll (Connection conn){
 
-        ArrayList <entityAircraft> result = new ArrayList <>();
+        List <entityAircraft> result = new ArrayList <>();
 
         try ( Statement st = conn.createStatement();
               ResultSet res = st.executeQuery(Constants.SELECT_ALL_AIRCRAFTS)) {
             while (res.next()) {
-                result.add ( new entityAircraft(
+                result.add ( new entityAircraft (
                                 res.getInt("id_aircraft"),
                                 res.getString("name"),
                                 res.getInt("passengers"),
@@ -64,6 +64,5 @@ public class entityAircraft {
 
         return result;
     }
-
 
 }
