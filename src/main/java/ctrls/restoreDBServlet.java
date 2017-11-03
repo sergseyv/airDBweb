@@ -32,9 +32,7 @@ public class restoreDBServlet extends HttpServlet {
 
         RestoreDB.restore(conn);
 
-        List <entityAircraft> listAircrafts = entityAircraft.selectAll(conn);  //TODO селект в скобки сразу засунуть
-
-        request.setAttribute("st1", listAircrafts);
+        request.setAttribute("aircraftsArrayList", entityAircraft.selectAll(conn));
         request.getRequestDispatcher("view/restore.jsp").forward(request, response);
 
 

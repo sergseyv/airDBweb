@@ -1,10 +1,8 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Seyvach Serg on 01.11.2017.
@@ -16,7 +14,7 @@ public class entityAircraft {
     private int maxWeightKg;
     private int maxRangeKm;
 
-    public entityAircraft (int idAircraft, String name, int passengers, int maxWeightKg, int maxRangeKm) {
+    private entityAircraft (int idAircraft, String name, int passengers, int maxWeightKg, int maxRangeKm) {
         this.idAircraft = idAircraft;
         this.name = name;
         this.passengers = passengers;
@@ -45,7 +43,7 @@ public class entityAircraft {
     }
 
 
-    public static ArrayList <entityAircraft> selectAll (Connection conn){
+    public static List<entityAircraft> selectAll (Connection conn){
 
         ArrayList <entityAircraft> result = new ArrayList <>();
 
@@ -60,7 +58,6 @@ public class entityAircraft {
                                 res.getInt("max_range__km"))
                            );
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,8 +1,6 @@
 package model;
 
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
-
-import java.sql.Connection;
 import java.sql.*;
 
 
