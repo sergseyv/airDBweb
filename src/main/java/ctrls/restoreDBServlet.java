@@ -38,11 +38,6 @@ public class restoreDBServlet extends HttpServlet {
 
         request.getRequestDispatcher("view/restore.jsp").forward(request, response);
 
-
-
-
-
-
         dbConnection.closeConnection();
     }
 }
