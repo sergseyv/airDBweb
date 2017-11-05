@@ -7,6 +7,7 @@
 </head>
 
 <body bgcolor="#ffff80">
+
 <div align="center">
     <hr width="50%">
     <p><b>Great, it's done!</b>
@@ -16,6 +17,7 @@
     <p>
     <hr width="50%">
 </div>
+
 
 <table width="100%" border="0" bgcolor="#ffff80">
     <tr align="center">
@@ -30,9 +32,10 @@
                 </tr>
             </table>
             <hr width="50%">
-            <table border="0" width="90%"  bgcolor="#003333">
+
+            <table border="0" width="90%"  bgcolor="#00331a">
                 <thead>
-                <tr align="center" bgcolor="#b3ffff">
+                <tr align="center" bgcolor="#b3ffd9">
                     <td><samp> <b>idAircraft</b>    <br>    <small>aircraft ID</small>              </samp></td>
                     <td><samp> <b>name</b>          <br>    <small>aircraft name</small>            </samp></td>
                     <td><samp> <b>passengers</b>    <br>    <small>number of passengers</small>     </samp></td>
@@ -41,7 +44,7 @@
                 </tr>
                 </thead>
                 <c:forEach var="aircraftsTable" items="${aircraftsArrayList}">
-                    <tr bgcolor="#ccffff">
+                    <tr bgcolor="#ccffe6">
                         <td><samp><small> <c:out value="${aircraftsTable.idAircraft}" />   </small></samp></td>
                         <td><samp><small> <c:out value="${aircraftsTable.name}" />         </small></samp></td>
                         <td><samp><small> <c:out value="${aircraftsTable.passengers}" />   </small></samp></td>
@@ -50,10 +53,12 @@
                     </tr>
                 </c:forEach>
             </table>
+
         </td>
         <td valign="top" width="30%">
             <hr width="90%">
             <samp><h2>companies</h2></samp>
+
             <table border="2" width="90%"  bgcolor="#ffcccc">
                 <tr align="center">
                     <td><b><samp>insert</samp></b></td>
@@ -62,6 +67,7 @@
                 </tr>
             </table>
             <hr width="50%">
+
             <table border="0" width="90%" bgcolor="#00331a">
                 <thead>
                 <tr align="center" bgcolor="#b3ffd9">
@@ -78,10 +84,12 @@
                     </tr>
                 </c:forEach>
             </table>
+
         </td>
         <td valign="top" width="30%">
             <hr width="90%">
             <samp><h2>ownership</h2></samp>
+
             <table border="2" width="90%"  bgcolor="#ffcccc">
                 <tr align="center">
                     <td><b><samp>insert</samp></b></td>
@@ -90,17 +98,18 @@
                 </tr>
             </table>
             <hr width="50%">
-            <table border="0" width="90%"  bgcolor="#"003300>
+
+            <table border="0" width="90%"  bgcolor="#00331a">
                 <thead>
-                <tr align="center" bgcolor="#ccffcc">
-                    <td><samp> <b>id_ownership</b>  <br>    <small>ownership ID</small>                 </samp></td>
-                    <td><samp> <b>id_companies</b>  <br>    <small>company ID</small>                   </samp></td>
-                    <td><samp> <b>id_aircraft</b>   <br>    <small>aircraft ID</small>                  </samp></td>
-                    <td><samp> <b>quantity</b>      <br>    <small>number of aircrafts in the company   </small>  </samp></td>
+                <tr align="center" bgcolor="#b3ffd9">
+                    <td><samp> <b>id_ownership</b>  <br>    <small>ownership ID</small>                         </samp></td>
+                    <td><samp> <b>id_companies</b>  <br>    <small>company ID</small>                           </samp></td>
+                    <td><samp> <b>id_aircraft</b>   <br>    <small>aircraft ID</small>                          </samp></td>
+                    <td><samp> <b>quantity</b>      <br>    <small>number of aircrafts in the company</small>   </samp></td>
                 </tr>
                 </thead>
                 <c:forEach var="ownershipsTable" items="${ownershipsArrayList}">
-                    <tr bgcolor="#e6ffe6">
+                    <tr bgcolor="#ccffe6">
                         <td><samp><small>  <c:out value="${ownershipsTable.idOwnership}" />    </small></samp></td>
                         <td><samp><small>  <c:out value="${ownershipsTable.idCompany}" />      </small></samp></td>
                         <td><samp><small>  <c:out value="${ownershipsTable.idAircraft}" />     </small></samp></td>
@@ -108,13 +117,51 @@
                     </tr>
                 </c:forEach>
             </table>
+
         </td>
     </tr>
 </table>
+
 <p>
+<hr>
+<p>
+<div align="center">
+<hr width="50%">
+<p><b>Some JOIN-queries</b>
+<p>
+<hr width="50%">
+</div>
 
-
-
+<table border="0" width="70%"  bgcolor="#00331a">
+    <tr align="left" bgcolor="#ffffff">
+        <td>
+          <b><samp>
+            SELECT companies.name, companies.country, aircrafts.name,  ownership.quantity<br>
+            FROM ownership<br>
+            JOIN companies ON ownership.id_companies = companies.id_companies<br>
+            JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft<br>
+          </samp></b>
+        </td>
+    </tr>
+</table>
+<table border="0" width="70%" bgcolor="#00331a">
+    <thead>
+    <tr align="center" bgcolor="#b3ffd9">
+        <td><samp> <b>name</b>      <br>    <small>company name</small>                         </samp></td>
+        <td><samp> <b>country</b>   <br>    <small>country of the company</small>               </samp></td>
+        <td><samp> <b>name</b>      <br>    <small>aircraft name</small>                        </samp></td>
+        <td><samp> <b>quantity</b>  <br>    <small>number of aircrafts in the company</small>   </samp></td>
+    </tr>
+    </thead>
+    <c:forEach var="select1" items="${select1ArrayList}">
+      <tr bgcolor="#ccffe6">
+        <td><samp><small>  <c:out value="${select1.nameCompany}" />     </small></samp></td>
+        <td><samp><small>  <c:out value="${select1.countryCompany}" />  </small></samp></td>
+        <td><samp><small>  <c:out value="${select1.nameAircraft}" />    </small></samp></td>
+        <td><samp><small>  <c:out value="${select1.quantity}" />        </small></samp></td>
+      </tr>
+    </c:forEach>
+</table>
 
 
 

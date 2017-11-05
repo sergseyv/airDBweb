@@ -3,7 +3,7 @@ package model;
 /**
  * Created by Seyvach Serg on 23.10.2017.
  */
-final class Constants {
+public final class Constants {
 
     static final String DROP_AIRCRAFTS = "DROP TABLE IF EXISTS aircrafts; ";
     static final String DROP_COMPANIES = "DROP TABLE IF EXISTS companies; ";
@@ -45,17 +45,17 @@ final class Constants {
             " INSERT INTO ownership (id_ownership, id_companies, id_aircraft, quantity ) " +
                     " VALUES (?, ?, ?, ?) ";
 
-    static final String SELECT_ALL_AIRCRAFTS = " SELECT * from aircrafts ";
-    static final String SELECT_ALL_COMPANIES = " SELECT * from companies ";
-    static final String SELECT_ALL_OWNERSHIPS = " SELECT * from ownership ";
+    public static final String SELECT_ALL_AIRCRAFTS = " SELECT * from aircrafts ";
+    public static final String SELECT_ALL_COMPANIES = " SELECT * from companies ";
+    public static final String SELECT_ALL_OWNERSHIPS = " SELECT * from ownership ";
 
-    static final String SELECT1 =   //просто соответствие самолетов компаниям
+    public static final String SELECT1 =   //просто соответствие самолетов компаниям
             " SELECT companies.name, companies.country, aircrafts.name,  ownership.quantity " +
                     " FROM ownership " +
                     " JOIN companies ON ownership.id_companies = companies.id_companies " +
                     " JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft ";
 
-    static final String SELECT2 = //выборка эйрбасов, упорядочена по макс.радиусу
+    public static final String SELECT2 = //выборка эйрбасов, упорядочена по макс.радиусу
             " SELECT companies.name, companies.country, aircrafts.name, aircrafts.max_range__km, ownership.quantity " +
                     " FROM ownership " +
                     " JOIN companies ON ownership.id_companies = companies.id_companies " +
@@ -65,7 +65,7 @@ final class Constants {
                     " ORDER BY " +
                     " aircrafts.max_range__km ASC ";
 
-    static final String SELECT3 = // сколько боингов у каждой компании
+    public static final String SELECT3 = // сколько боингов у каждой компании
             " SELECT companies.name, companies.country, SUM(ownership.quantity) " +
                     " FROM ownership " +
                     " JOIN companies ON ownership.id_companies = companies.id_companies " +
@@ -74,7 +74,7 @@ final class Constants {
                     " group by ownership.id_companies " +
                     " order by SUM(ownership.quantity) ";
 
-    static final String SELECT4 = //сколько у каждой компании самолетов и сколько всего она может перевезти народу за раз.
+    public static final String SELECT4 = //сколько у каждой компании самолетов и сколько всего она может перевезти народу за раз.
             " SELECT companies.name, companies.country, " +
                     " SUM(ownership.quantity), SUM(ownership.quantity*aircrafts.passengers) " +
                     " FROM ownership " +

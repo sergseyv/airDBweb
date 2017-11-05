@@ -1,19 +1,22 @@
-package model;
+package model.resultObjects;
+
+import model.Constants;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Seyvach Serg on 01.11.2017.
  */
-public class entityOwnership {
+public class ObjOwnership {
     private int idOwnership;
     private int idCompany;
     private int idAircraft;
     private int quantity;
 
-    private entityOwnership(int idOwnership, int idCompany, int idAircraft, int quantity) {
+    private ObjOwnership(int idOwnership, int idCompany, int idAircraft, int quantity) {
         this.idOwnership = idOwnership;
         this.idCompany = idCompany;
         this.idAircraft = idAircraft;
@@ -36,14 +39,21 @@ public class entityOwnership {
         return quantity;
     }
 
-    public static List<entityOwnership> selectAll (Connection conn){
 
-        List <entityOwnership> result = new ArrayList <>();
+    @Override
+    public int hashCode() {
+        return Objects.hash( idOwnership, idCompany, idAircraft, quantity);
+    }
+
+
+    public static List<ObjOwnership> selectAll (Connection conn){
+
+        List <ObjOwnership> result = new ArrayList <>();
 
         try ( Statement st = conn.createStatement();
               ResultSet res = st.executeQuery(Constants.SELECT_ALL_OWNERSHIPS)) {
             while (res.next()) {
-                result.add ( new entityOwnership (
+                result.add ( new ObjOwnership(
                         res.getInt("id_ownership"),
                         res.getInt("id_companies"),
                         res.getInt("id_aircraft"),

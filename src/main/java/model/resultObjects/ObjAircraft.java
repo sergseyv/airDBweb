@@ -1,20 +1,23 @@
-package model;
+package model.resultObjects;
+
+import model.Constants;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Seyvach Serg on 01.11.2017.
  */
-public class entityAircraft {
+public class ObjAircraft {
     private int idAircraft;
     private String name;
     private int passengers;
     private int maxWeightKg;
     private int maxRangeKm;
 
-    private entityAircraft (int idAircraft, String name, int passengers, int maxWeightKg, int maxRangeKm) {
+    private ObjAircraft(int idAircraft, String name, int passengers, int maxWeightKg, int maxRangeKm) {
         this.idAircraft = idAircraft;
         this.name = name;
         this.passengers = passengers;
@@ -43,14 +46,20 @@ public class entityAircraft {
     }
 
 
-    public static List<entityAircraft> selectAll (Connection conn){
+    @Override
+    public int hashCode() {
+        return Objects.hash( idAircraft, name, passengers, maxWeightKg, maxRangeKm );
+    }
 
-        List <entityAircraft> result = new ArrayList <>();
+
+    public static List<ObjAircraft> selectAll (Connection conn){
+
+        List <ObjAircraft> result = new ArrayList <>();
 
         try ( Statement st = conn.createStatement();
               ResultSet res = st.executeQuery(Constants.SELECT_ALL_AIRCRAFTS)) {
             while (res.next()) {
-                result.add ( new entityAircraft (
+                result.add ( new ObjAircraft(
                                 res.getInt("id_aircraft"),
                                 res.getString("name"),
                                 res.getInt("passengers"),
