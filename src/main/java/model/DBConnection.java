@@ -14,9 +14,7 @@ public class DBConnection {
     private static DBConnection dbConnection = null;
     private Connection conn = null;
 
-
     private DBConnection() {}
-
 
     public static synchronized DBConnection getIstance(){
         if ( dbConnection == null ) {

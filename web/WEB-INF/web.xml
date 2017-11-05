@@ -8,19 +8,24 @@
         <servlet-name>restore_slt</servlet-name>
         <servlet-class>ctrls.restoreDBServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>add_slt</servlet-name>
-        <servlet-class>ctrls.addServlet</servlet-class>
-    </servlet>
-
-
     <servlet-mapping>
         <servlet-name>restore_slt</servlet-name>
         <url-pattern>/restore</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>showMainPage_slt</servlet-name>
+        <servlet-class>ctrls.showMainPageServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>add_slt</servlet-name>
-        <url-pattern>/add</url-pattern>
+        <servlet-name>showMainPage_slt</servlet-name>
+        <url-pattern>/showMainPage</url-pattern>
     </servlet-mapping>
+
+
+
+
+
+
 
 </web-app>

@@ -27,17 +27,8 @@ public class restoreDBServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        DBConnection dbConnection = DBConnection.getIstance();
-        Connection conn = dbConnection.getConnection();
+        RestoreDB.restore(DBConnection.getIstance().getConnection());
+        response.sendRedirect("showMainPage");
 
-        RestoreDB.restore(conn);
-
-        request.setAttribute("aircraftsArrayList", entityAircraft.selectAll(conn));
-        request.setAttribute("companiesArrayList", entityCompany.selectAll(conn));
-        request.setAttribute("ownershipsArrayList", entityOwnership.selectAll(conn));
-
-        request.getRequestDispatcher("view/restore.jsp").forward(request, response);
-
-        dbConnection.closeConnection();
     }
 }
