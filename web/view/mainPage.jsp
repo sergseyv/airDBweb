@@ -10,7 +10,7 @@
 
 <div align="center">
     <hr width="50%">
-    <p><b>Great, it's done!</b>
+    <p><h2>Great, it's done!</h2>
     <p>Now we have 3 tables: <samp><b>"aircrafts"</b></samp>, <samp><b>"companies"</b></samp> and <samp><b>"ownership"</b></samp>.
     <p>You can <b>insert</b>, <b>update</b>, and <b>delete</b> records from tables.
     <p>Also, you can scroll down the page and see some JOIN-queries.
@@ -122,17 +122,25 @@
     </tr>
 </table>
 
-<p>
-<hr>
+
 <p>
 <div align="center">
 <hr width="50%">
-<p><b>Some JOIN-queries</b>
+<p><h2>Some JOIN-queries</h2>
 <p>
 <hr width="50%">
 </div>
 
-<table border="0" width="70%"  bgcolor="#00331a">
+<table border="0" width="70%"  bgcolor="#00331a" cellpadding="5">
+    <tr align="left" bgcolor="#ffcccc">
+        <td>
+            <samp>
+            <b>Query 1.</b>
+            List of all companies and all their aircrafts.
+            </samp>
+        </td>
+    </tr>
+
     <tr align="left" bgcolor="#ffffff">
         <td>
           <b><samp>
@@ -147,9 +155,9 @@
 <table border="0" width="70%" bgcolor="#00331a">
     <thead>
     <tr align="center" bgcolor="#b3ffd9">
-        <td><samp> <b>name</b>      <br>    <small>company name</small>                         </samp></td>
-        <td><samp> <b>country</b>   <br>    <small>country of the company</small>               </samp></td>
-        <td><samp> <b>name</b>      <br>    <small>aircraft name</small>                        </samp></td>
+        <td width="27%"><samp> <b>name</b>      <br>    <small>company name</small>             </samp></td>
+        <td width="27%"><samp> <b>country</b>   <br>    <small>country of the company</small>   </samp></td>
+        <td width="27%"><samp> <b>name</b>      <br>    <small>aircraft name</small>            </samp></td>
         <td><samp> <b>quantity</b>  <br>    <small>number of aircrafts in the company</small>   </samp></td>
     </tr>
     </thead>
@@ -162,6 +170,104 @@
       </tr>
     </c:forEach>
 </table>
+
+<p>
+<hr width="50%" align="left">
+<p>
+
+<table border="0" width="70%"  bgcolor="#00331a" cellpadding="5">
+    <tr align="left" bgcolor="#ffcccc">
+        <td>
+            <samp>
+                <b>Query 2.</b>
+                List of all Airbus airplanes with their companies, ordered in ascending maximum flight range.
+            </samp>
+        </td>
+    </tr>
+    <tr align="left" bgcolor="#ffffff">
+        <td>
+            <b><samp>
+               SELECT companies.name, companies.country, aircrafts.name, aircrafts.max_range__km, ownership.quantity<br>
+               FROM ownership<br>
+               JOIN companies ON ownership.id_companies = companies.id_companies<br>
+               JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft<br>
+               WHERE aircrafts.name LIKE '%Airbus%'<br>
+               ORDER BY aircrafts.max_range__km ASC<br>
+            </samp></b>
+        </td>
+    </tr>
+</table>
+<table border="0" width="70%" bgcolor="#00331a">
+    <thead>
+    <tr align="center" bgcolor="#b3ffd9">
+        <td width="25%"><samp> <b>name</b>      <br><small>company name</small>             </samp></td>
+        <td width="25%"><samp> <b>country</b>   <br><small>country of the company</small>   </samp></td>
+        <td width="20%"><samp> <b>name</b>      <br><small>aircraft name</small>            </samp></td>
+        <td width="15%"><samp> <b>maxRangeKm</b><br><small>maximum flight range, km</small> </samp></td>
+        <td><samp> <b>quantity</b>  <br><small>number of aircrafts in the company</small>   </samp></td>
+    </tr>
+    </thead>
+    <c:forEach var="select2" items="${select2ArrayList}">
+        <tr bgcolor="#ccffe6">
+            <td><samp><small>  <c:out value="${select2.nameCompany}" />     </small></samp></td>
+            <td><samp><small>  <c:out value="${select2.countryCompany}" />  </small></samp></td>
+            <td><samp><small>  <c:out value="${select2.nameAircraft}" />    </small></samp></td>
+            <td><samp><small>  <c:out value="${select2.maxRangeAircraft}" /></small></samp></td>
+            <td><samp><small>  <c:out value="${select2.quantity}" />        </small></samp></td>
+        </tr>
+    </c:forEach>
+</table>
+
+
+
+
+<p>
+<hr width="50%" align="left">
+<p>
+
+<table border="0" width="70%"  bgcolor="#00331a" cellpadding="5">
+    <tr align="left" bgcolor="#ffcccc">
+        <td>
+            <samp>
+                <b>Query 3.</b>
+                List of all Airbus airplanes with their companies, ordered in ascending maximum flight range.
+            </samp>
+        </td>
+    </tr>
+    <tr align="left" bgcolor="#ffffff">
+        <td>
+            <b><samp>
+                SELECT companies.name, companies.country, aircrafts.name, aircrafts.max_range__km, ownership.quantity<br>
+                FROM ownership<br>
+                JOIN companies ON ownership.id_companies = companies.id_companies<br>
+                JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft<br>
+                WHERE aircrafts.name LIKE '%Airbus%'<br>
+                ORDER BY aircrafts.max_range__km ASC<br>
+            </samp></b>
+        </td>
+    </tr>
+</table>
+<table border="0" width="70%" bgcolor="#00331a">
+    <thead>
+    <tr align="center" bgcolor="#b3ffd9">
+        <td width="25%"><samp> <b>name</b>      <br><small>company name</small>             </samp></td>
+        <td width="25%"><samp> <b>country</b>   <br><small>country of the company</small>   </samp></td>
+        <td width="20%"><samp> <b>name</b>      <br><small>aircraft name</small>            </samp></td>
+        <td width="15%"><samp> <b>maxRangeKm</b><br><small>maximum flight range, km</small> </samp></td>
+        <td><samp> <b>quantity</b>  <br><small>number of aircrafts in the company</small>   </samp></td>
+    </tr>
+    </thead>
+    <c:forEach var="select2" items="${select2ArrayList}">
+        <tr bgcolor="#ccffe6">
+            <td><samp><small>  <c:out value="${select2.nameCompany}" />     </small></samp></td>
+            <td><samp><small>  <c:out value="${select2.countryCompany}" />  </small></samp></td>
+            <td><samp><small>  <c:out value="${select2.nameAircraft}" />    </small></samp></td>
+            <td><samp><small>  <c:out value="${select2.maxRangeAircraft}" /></small></samp></td>
+            <td><samp><small>  <c:out value="${select2.quantity}" />        </small></samp></td>
+        </tr>
+    </c:forEach>
+</table>
+
 
 
 

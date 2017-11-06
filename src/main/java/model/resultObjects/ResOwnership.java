@@ -10,13 +10,13 @@ import java.util.Objects;
 /**
  * Created by Seyvach Serg on 01.11.2017.
  */
-public class ObjOwnership {
+public class ResOwnership {
     private int idOwnership;
     private int idCompany;
     private int idAircraft;
     private int quantity;
 
-    private ObjOwnership(int idOwnership, int idCompany, int idAircraft, int quantity) {
+    private ResOwnership(int idOwnership, int idCompany, int idAircraft, int quantity) {
         this.idOwnership = idOwnership;
         this.idCompany = idCompany;
         this.idAircraft = idAircraft;
@@ -46,14 +46,14 @@ public class ObjOwnership {
     }
 
 
-    public static List<ObjOwnership> selectAll (Connection conn){
+    public static List<ResOwnership> selectAll (Connection conn){
 
-        List <ObjOwnership> result = new ArrayList <>();
+        List <ResOwnership> result = new ArrayList <>();
 
         try ( Statement st = conn.createStatement();
               ResultSet res = st.executeQuery(Constants.SELECT_ALL_OWNERSHIPS)) {
             while (res.next()) {
-                result.add ( new ObjOwnership(
+                result.add ( new ResOwnership(
                         res.getInt("id_ownership"),
                         res.getInt("id_companies"),
                         res.getInt("id_aircraft"),

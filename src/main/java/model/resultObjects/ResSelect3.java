@@ -13,16 +13,14 @@ import java.util.Objects;
 /**
  * Created by Seyvach Serg on 06.11.2017.
  */
-public class ObjSelect1 {
+public class ResSelect3 {
     private String nameCompany;
     private String countryCompany;
-    private String nameAircraft;
     private int quantity;
 
-    private ObjSelect1(String nameCompany, String countryCompany, String nameAircraft, int quantity) {
+    public ResSelect3(String nameCompany, String countryCompany, int quantity) {
         this.nameCompany = nameCompany;
         this.countryCompany = countryCompany;
-        this.nameAircraft = nameAircraft;
         this.quantity = quantity;
     }
 
@@ -34,33 +32,27 @@ public class ObjSelect1 {
         return countryCompany;
     }
 
-    public String getNameAircraft() {
-        return nameAircraft;
-    }
-
     public int getQuantity() {
         return quantity;
     }
-    
 
     @Override
     public int hashCode() {
-        return Objects.hash(nameCompany, countryCompany, nameAircraft, quantity);
+        return Objects.hash(nameCompany, countryCompany, quantity);
     }
 
 
-    public static List<ObjSelect1> selectAll (Connection conn){
+    public static List<ResSelect3> selectAll (Connection conn){
 
-        List <ObjSelect1> result = new ArrayList<>();
+        List <ResSelect3> result = new ArrayList<>();
 
         try (Statement st = conn.createStatement();
              ResultSet res = st.executeQuery(Constants.SELECT1)) {
             while (res.next()) {
-                result.add ( new ObjSelect1(
+                result.add ( new ResSelect3(
                         res.getString(1),
                         res.getString(2),
-                        res.getString(3),
-                        res.getInt(4))
+                        res.getInt(3))
                 );
             }
         } catch (SQLException e) {
@@ -69,11 +61,6 @@ public class ObjSelect1 {
 
         return result;
     }
-
-
-
-
-
 
 
 

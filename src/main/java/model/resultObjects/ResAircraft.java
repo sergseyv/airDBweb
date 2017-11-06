@@ -10,14 +10,14 @@ import java.util.Objects;
 /**
  * Created by Seyvach Serg on 01.11.2017.
  */
-public class ObjAircraft {
+public class ResAircraft {
     private int idAircraft;
     private String name;
     private int passengers;
     private int maxWeightKg;
     private int maxRangeKm;
 
-    private ObjAircraft(int idAircraft, String name, int passengers, int maxWeightKg, int maxRangeKm) {
+    private ResAircraft(int idAircraft, String name, int passengers, int maxWeightKg, int maxRangeKm) {
         this.idAircraft = idAircraft;
         this.name = name;
         this.passengers = passengers;
@@ -52,14 +52,14 @@ public class ObjAircraft {
     }
 
 
-    public static List<ObjAircraft> selectAll (Connection conn){
+    public static List<ResAircraft> selectAll (Connection conn){
 
-        List <ObjAircraft> result = new ArrayList <>();
+        List <ResAircraft> result = new ArrayList <>();
 
         try ( Statement st = conn.createStatement();
               ResultSet res = st.executeQuery(Constants.SELECT_ALL_AIRCRAFTS)) {
             while (res.next()) {
-                result.add ( new ObjAircraft(
+                result.add ( new ResAircraft(
                                 res.getInt("id_aircraft"),
                                 res.getString("name"),
                                 res.getInt("passengers"),

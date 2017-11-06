@@ -10,12 +10,12 @@ import java.util.Objects;
 /**
  * Created by Seyvach Serg on 01.11.2017.
  */
-public class ObjCompany {
+public class ResCompany {
     private int idCompany;
     private String name;
     private String country;
 
-    private ObjCompany(int idCompany, String name, String country) {
+    private ResCompany(int idCompany, String name, String country) {
         this.idCompany = idCompany;
         this.name = name;
         this.country = country;
@@ -40,14 +40,14 @@ public class ObjCompany {
     }
 
 
-    public static List<ObjCompany> selectAll (Connection conn){
+    public static List<ResCompany> selectAll (Connection conn){
 
-        ArrayList<ObjCompany> result = new ArrayList <>();
+        ArrayList<ResCompany> result = new ArrayList <>();
 
         try (Statement st = conn.createStatement();
              ResultSet res = st.executeQuery(Constants.SELECT_ALL_COMPANIES)) {
             while (res.next()) {
-                result.add ( new ObjCompany(
+                result.add ( new ResCompany(
                         res.getInt("id_companies"),
                         res.getString("name"),
                         res.getString("country"))

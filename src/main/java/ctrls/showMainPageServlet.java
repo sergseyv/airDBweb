@@ -1,10 +1,7 @@
 package ctrls;
 
 import model.*;
-import model.resultObjects.ObjAircraft;
-import model.resultObjects.ObjCompany;
-import model.resultObjects.ObjOwnership;
-import model.resultObjects.ObjSelect1;
+import model.resultObjects.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,11 +24,12 @@ public class showMainPageServlet extends HttpServlet {
 
         Connection conn = DBConnection.getIstance().getConnection();
 
-        request.setAttribute("aircraftsArrayList", ObjAircraft.selectAll(conn));
-        request.setAttribute("companiesArrayList", ObjCompany.selectAll(conn));
-        request.setAttribute("ownershipsArrayList", ObjOwnership.selectAll(conn));
+        request.setAttribute("aircraftsArrayList", ResAircraft.selectAll(conn));
+        request.setAttribute("companiesArrayList", ResCompany.selectAll(conn));
+        request.setAttribute("ownershipsArrayList", ResOwnership.selectAll(conn));
 
-        request.setAttribute("select1ArrayList", ObjSelect1.selectAll(conn));
+        request.setAttribute("select1ArrayList", ResSelect1.selectAll(conn));
+        request.setAttribute("select2ArrayList", ResSelect2.selectAll(conn));
 
         request.getRequestDispatcher("view/mainPage.jsp").forward(request, response);
 
