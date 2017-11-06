@@ -139,7 +139,7 @@ public class RestoreDB {
             addOwnership(pst, 13, 5, 1, 28);
             addOwnership(pst, 14, 5, 2, 36);
             addOwnership(pst, 15, 5, 4, 41);
-            addOwnership(pst, 16, 5, 8, 22);
+            addOwnership(pst, 16, 5, 8, 56);
             addOwnership(pst, 17, 6, 7, 57);
             addOwnership(pst, 18, 6, 3, 19);
             addOwnership(pst, 19, 6, 11, 33);

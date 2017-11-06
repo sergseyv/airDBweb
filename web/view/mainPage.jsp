@@ -147,7 +147,7 @@
             SELECT companies.name, companies.country, aircrafts.name,  ownership.quantity<br>
             FROM ownership<br>
             JOIN companies ON ownership.id_companies = companies.id_companies<br>
-            JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft<br>
+            JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft
           </samp></b>
         </td>
     </tr>
@@ -192,7 +192,7 @@
                JOIN companies ON ownership.id_companies = companies.id_companies<br>
                JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft<br>
                WHERE aircrafts.name LIKE '%Airbus%'<br>
-               ORDER BY aircrafts.max_range__km ASC<br>
+               ORDER BY aircrafts.max_range__km ASC
             </samp></b>
         </td>
     </tr>
@@ -230,19 +230,20 @@
         <td>
             <samp>
                 <b>Query 3.</b>
-                List of all Airbus airplanes with their companies, ordered in ascending maximum flight range.
+                List shows how many Boeings each company has, ranked in descending order.
             </samp>
         </td>
     </tr>
     <tr align="left" bgcolor="#ffffff">
         <td>
             <b><samp>
-                SELECT companies.name, companies.country, aircrafts.name, aircrafts.max_range__km, ownership.quantity<br>
-                FROM ownership<br>
-                JOIN companies ON ownership.id_companies = companies.id_companies<br>
-                JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft<br>
-                WHERE aircrafts.name LIKE '%Airbus%'<br>
-                ORDER BY aircrafts.max_range__km ASC<br>
+               SELECT companies.name, companies.country, SUM(ownership.quantity)<br>
+               FROM ownership<br>
+               JOIN companies ON ownership.id_companies = companies.id_companies<br>
+               JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft<br>
+               WHERE aircrafts.name LIKE '%Boeing%'<br>
+               group by ownership.id_companies<br>
+               order by SUM(ownership.quantity) DESC
             </samp></b>
         </td>
     </tr>
@@ -250,20 +251,16 @@
 <table border="0" width="70%" bgcolor="#00331a">
     <thead>
     <tr align="center" bgcolor="#b3ffd9">
-        <td width="25%"><samp> <b>name</b>      <br><small>company name</small>             </samp></td>
-        <td width="25%"><samp> <b>country</b>   <br><small>country of the company</small>   </samp></td>
-        <td width="20%"><samp> <b>name</b>      <br><small>aircraft name</small>            </samp></td>
-        <td width="15%"><samp> <b>maxRangeKm</b><br><small>maximum flight range, km</small> </samp></td>
-        <td><samp> <b>quantity</b>  <br><small>number of aircrafts in the company</small>   </samp></td>
+        <td width="40%"><samp> <b>name</b>      <br><small>company name             </small></samp></td>
+        <td width="40%"><samp> <b>country</b>   <br><small>country of the company   </small></samp></td>
+        <td><samp> <b>quantity</b>  <br><small>number of Boeings in the company     </small></samp></td>
     </tr>
     </thead>
-    <c:forEach var="select2" items="${select2ArrayList}">
+    <c:forEach var="select3" items="${select3ArrayList}">
         <tr bgcolor="#ccffe6">
-            <td><samp><small>  <c:out value="${select2.nameCompany}" />     </small></samp></td>
-            <td><samp><small>  <c:out value="${select2.countryCompany}" />  </small></samp></td>
-            <td><samp><small>  <c:out value="${select2.nameAircraft}" />    </small></samp></td>
-            <td><samp><small>  <c:out value="${select2.maxRangeAircraft}" /></small></samp></td>
-            <td><samp><small>  <c:out value="${select2.quantity}" />        </small></samp></td>
+            <td><samp><small>  <c:out value="${select3.nameCompany}" />     </small></samp></td>
+            <td><samp><small>  <c:out value="${select3.countryCompany}" />  </small></samp></td>
+            <td><samp><small>  <c:out value="${select3.quantity}" />        </small></samp></td>
         </tr>
     </c:forEach>
 </table>

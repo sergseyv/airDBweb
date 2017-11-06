@@ -72,7 +72,7 @@ public final class Constants {
                     " JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft " +
                     " WHERE aircrafts.name LIKE '%Boeing%' " +
                     " group by ownership.id_companies " +
-                    " order by SUM(ownership.quantity) ";
+                    " order by SUM(ownership.quantity) DESC";
 
     public static final String SELECT4 = //сколько у каждой компании самолетов и сколько всего она может перевезти народу за раз.
             " SELECT companies.name, companies.country, " +

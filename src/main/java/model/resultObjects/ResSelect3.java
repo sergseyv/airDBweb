@@ -47,7 +47,7 @@ public class ResSelect3 {
         List <ResSelect3> result = new ArrayList<>();
 
         try (Statement st = conn.createStatement();
-             ResultSet res = st.executeQuery(Constants.SELECT1)) {
+             ResultSet res = st.executeQuery(Constants.SELECT3)) {
             while (res.next()) {
                 result.add ( new ResSelect3(
                         res.getString(1),

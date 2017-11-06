@@ -30,6 +30,7 @@ public class showMainPageServlet extends HttpServlet {
 
         request.setAttribute("select1ArrayList", ResSelect1.selectAll(conn));
         request.setAttribute("select2ArrayList", ResSelect2.selectAll(conn));
+        request.setAttribute("select3ArrayList", ResSelect3.selectAll(conn));
 
         request.getRequestDispatcher("view/mainPage.jsp").forward(request, response);
 
