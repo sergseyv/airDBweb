@@ -26,11 +26,12 @@ public class showMainPageServlet extends HttpServlet {
 
         request.setAttribute("aircraftsArrayList", ResAircraft.selectAll(conn));
         request.setAttribute("companiesArrayList", ResCompany.selectAll(conn));
-        request.setAttribute("ownershipsArrayList", ResOwnership.selectAll(conn));
+        request.setAttribute("ownershipArrayList", ResOwnership.selectAll(conn));
 
         request.setAttribute("select1ArrayList", ResSelect1.selectAll(conn));
         request.setAttribute("select2ArrayList", ResSelect2.selectAll(conn));
         request.setAttribute("select3ArrayList", ResSelect3.selectAll(conn));
+        request.setAttribute("select4ArrayList", ResSelect4.selectAll(conn));
 
         request.getRequestDispatcher("view/mainPage.jsp").forward(request, response);
 

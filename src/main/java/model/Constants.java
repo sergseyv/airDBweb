@@ -60,10 +60,8 @@ public final class Constants {
                     " FROM ownership " +
                     " JOIN companies ON ownership.id_companies = companies.id_companies " +
                     " JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft " +
-                    " WHERE " +
-                    " aircrafts.name LIKE '%Airbus%' " +
-                    " ORDER BY " +
-                    " aircrafts.max_range__km ASC ";
+                    " WHERE aircrafts.name LIKE '%Airbus%' " +
+                    " ORDER BY aircrafts.max_range__km ASC ";
 
     public static final String SELECT3 = // сколько боингов у каждой компании
             " SELECT companies.name, companies.country, SUM(ownership.quantity) " +
@@ -71,8 +69,8 @@ public final class Constants {
                     " JOIN companies ON ownership.id_companies = companies.id_companies " +
                     " JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft " +
                     " WHERE aircrafts.name LIKE '%Boeing%' " +
-                    " group by ownership.id_companies " +
-                    " order by SUM(ownership.quantity) DESC";
+                    " GROUP BY ownership.id_companies " +
+                    " ORDER BY SUM(ownership.quantity) DESC";
 
     public static final String SELECT4 = //сколько у каждой компании самолетов и сколько всего она может перевезти народу за раз.
             " SELECT companies.name, companies.country, " +
@@ -80,9 +78,7 @@ public final class Constants {
                     " FROM ownership " +
                     " JOIN companies ON ownership.id_companies = companies.id_companies " +
                     " JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft " +
-                    " group by ownership.id_companies " +
-                    " ORDER BY SUM(ownership.quantity*aircrafts.passengers) DESC ";
-
-
+                    " GROUP BY ownership.id_companies " +
+                    " ORDER BY SUM(ownership.quantity*aircrafts.passengers) ASC ";
 
 }

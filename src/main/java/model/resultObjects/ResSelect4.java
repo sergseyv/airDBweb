@@ -1,5 +1,13 @@
 package model.resultObjects;
 
+import model.Constants;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -38,6 +46,29 @@ public class ResSelect4 {
     public int hashCode() {
         return Objects.hash(nameCompany, countryCompany, quantity, passengers);
     }
+
+
+    public static List<ResSelect4> selectAll (Connection conn){
+
+        List <ResSelect4> result = new ArrayList<>();
+
+        try (Statement st = conn.createStatement();
+             ResultSet res = st.executeQuery(Constants.SELECT4)) {
+            while (res.next()) {
+                result.add ( new ResSelect4(
+                        res.getString(1),
+                        res.getString(2),
+                        res.getInt(3),
+                        res.getInt(4))
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
 
 
 }

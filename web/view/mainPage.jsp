@@ -13,7 +13,7 @@
     <p><h2>Great, it's done!</h2>
     <p>Now we have 3 tables: <samp><b>"aircrafts"</b></samp>, <samp><b>"companies"</b></samp> and <samp><b>"ownership"</b></samp>.
     <p>You can <b>insert</b>, <b>update</b>, and <b>delete</b> records from tables.
-    <p>Also, you can scroll down the page and see some JOIN-queries.
+    <p>Also, you can scroll down the page and see several JOIN-queries.
     <p>
     <hr width="50%">
 </div>
@@ -108,12 +108,12 @@
                     <td><samp> <b>quantity</b>      <br>    <small>number of aircrafts in the company</small>   </samp></td>
                 </tr>
                 </thead>
-                <c:forEach var="ownershipsTable" items="${ownershipsArrayList}">
+                <c:forEach var="ownershipTable" items="${ownershipArrayList}">
                     <tr bgcolor="#ccffe6">
-                        <td><samp><small>  <c:out value="${ownershipsTable.idOwnership}" />    </small></samp></td>
-                        <td><samp><small>  <c:out value="${ownershipsTable.idCompany}" />      </small></samp></td>
-                        <td><samp><small>  <c:out value="${ownershipsTable.idAircraft}" />     </small></samp></td>
-                        <td><samp><small>  <c:out value="${ownershipsTable.quantity}" />       </small></samp></td>
+                        <td><samp><small>  <c:out value="${ownershipTable.idOwnership}" />    </small></samp></td>
+                        <td><samp><small>  <c:out value="${ownershipTable.idCompany}" />      </small></samp></td>
+                        <td><samp><small>  <c:out value="${ownershipTable.idAircraft}" />     </small></samp></td>
+                        <td><samp><small>  <c:out value="${ownershipTable.quantity}" />       </small></samp></td>
                     </tr>
                 </c:forEach>
             </table>
@@ -180,7 +180,7 @@
         <td>
             <samp>
                 <b>Query 2.</b>
-                List of all Airbus airplanes with their companies, ordered in ascending maximum flight range.
+                List of all Airbus airplanes with their companies, sorted in ascending maximum flight range.
             </samp>
         </td>
     </tr>
@@ -230,7 +230,7 @@
         <td>
             <samp>
                 <b>Query 3.</b>
-                List shows how many Boeings each company has, ranked in descending order.
+                List shows how many Boeings each company has, sorted in descending order.
             </samp>
         </td>
     </tr>
@@ -242,8 +242,8 @@
                JOIN companies ON ownership.id_companies = companies.id_companies<br>
                JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft<br>
                WHERE aircrafts.name LIKE '%Boeing%'<br>
-               group by ownership.id_companies<br>
-               order by SUM(ownership.quantity) DESC
+               GROUP BY ownership.id_companies<br>
+               ORDER BY SUM(ownership.quantity) DESC
             </samp></b>
         </td>
     </tr>
@@ -265,6 +265,55 @@
     </c:forEach>
 </table>
 
+<p>
+<hr width="50%" align="left">
+<p>
+
+
+<table border="0" width="70%"  bgcolor="#00331a" cellpadding="5">
+    <tr align="left" bgcolor="#ffcccc">
+        <td>
+            <samp>
+                <b>Query 4.</b>
+                List shows how many aircrafts each company has and
+                how many passengers each company can carry at the same time.
+                Sorted in ascending order by number of passengers.
+            </samp>
+        </td>
+    </tr>
+
+    <tr align="left" bgcolor="#ffffff">
+        <td>
+            <b><samp>
+                SELECT companies.name, companies.country,<br>
+                SUM(ownership.quantity), SUM(ownership.quantity*aircrafts.passengers)<br>
+                FROM ownership<br>
+                JOIN companies ON ownership.id_companies = companies.id_companies<br>
+                JOIN aircrafts ON ownership.id_aircraft= aircrafts.id_aircraft<br>
+                GROUP BY ownership.id_companies<br>
+                ORDER BY SUM(ownership.quantity*aircrafts.passengers) ASC
+            </samp></b>
+        </td>
+    </tr>
+</table>
+<table border="0" width="70%" bgcolor="#00331a">
+    <thead>
+    <tr align="center" bgcolor="#b3ffd9">
+        <td width="30%"><samp> <b>name</b>      <br><small>company name</small>     </samp></td>
+        <td width="30%"><samp> <b>country</b>   <br><small>country of the company</small>    </samp></td>
+        <td width="20%"><samp> <b>quantity</b>  <br><small>how many aircrafts in the company   </small>   </samp></td>
+        <td><samp> <b>passengers</b><br><small>how many passengers can be transported at the same time  </small>   </samp></td>
+    </tr>
+    </thead>
+    <c:forEach var="select4" items="${select4ArrayList}">
+        <tr bgcolor="#ccffe6">
+            <td><samp><small>  <c:out value="${select4.nameCompany}" />     </small></samp></td>
+            <td><samp><small>  <c:out value="${select4.countryCompany}" />  </small></samp></td>
+            <td><samp><small>  <c:out value="${select4.quantity}" />    </small></samp></td>
+            <td><samp><small>  <c:out value="${select4.passengers}" />        </small></samp></td>
+        </tr>
+    </c:forEach>
+</table>
 
 
 
