@@ -26,7 +26,7 @@
             <samp><h2>aircrafts</h2></samp>
             <table border="2" width="90%"  bgcolor="#ffcccc">
                 <tr align="center">
-                    <td><b><samp><a href="addaircraft" title="Add new aircraft">Add</a></samp></b></td>
+                    <td><b><samp><a href="addaircraftshow" title="Add new aircraft">Add</a></samp></b></td>
                     <td><b><samp><a href="updateaircraft" title="Update aircraft">Update</a></samp></b></td>
                     <td><b><samp><a href="deleteaircraft" title="Delete aircraft">Delete</a></samp></b></td>
                 </tr>

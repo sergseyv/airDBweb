@@ -13,6 +13,7 @@
         <url-pattern>/restore</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>showMainPageServlet</servlet-name>
         <servlet-class>ctrls.showMainPageServlet</servlet-class>
@@ -22,6 +23,7 @@
         <url-pattern>/showmainpage</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>addAircraftServlet</servlet-name>
         <servlet-class>ctrls.addAircraftServlet</servlet-class>
@@ -30,6 +32,17 @@
         <servlet-name>addAircraftServlet</servlet-name>
         <url-pattern>/addaircraft</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addAircraftServletShow</servlet-name>
+        <servlet-class>ctrls.addAircraftServletShow</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addAircraftServletShow</servlet-name>
+        <url-pattern>/addaircraftshow</url-pattern>
+    </servlet-mapping>
+
+
 
     <servlet>
         <servlet-name>updateAircraftServlet</servlet-name>
