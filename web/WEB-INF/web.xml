@@ -5,24 +5,49 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>restore_slt</servlet-name>
+        <servlet-name>restoreDBServlet</servlet-name>
         <servlet-class>ctrls.restoreDBServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>restore_slt</servlet-name>
+        <servlet-name>restoreDBServlet</servlet-name>
         <url-pattern>/restore</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>showMainPage_slt</servlet-name>
+        <servlet-name>showMainPageServlet</servlet-name>
         <servlet-class>ctrls.showMainPageServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>showMainPage_slt</servlet-name>
-        <url-pattern>/showMainPage</url-pattern>
+        <servlet-name>showMainPageServlet</servlet-name>
+        <url-pattern>/showmainpage</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>addAircraftServlet</servlet-name>
+        <servlet-class>ctrls.addAircraftServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addAircraftServlet</servlet-name>
+        <url-pattern>/addaircraft</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>updateAircraftServlet</servlet-name>
+        <servlet-class>ctrls.updateAircraftServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateAircraftServlet</servlet-name>
+        <url-pattern>/updateaircraft</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteAircraftServlet</servlet-name>
+        <servlet-class>ctrls.deleteAircraftServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteAircraftServlet</servlet-name>
+        <url-pattern>/deleteaircraft</url-pattern>
+    </servlet-mapping>
 
 
 

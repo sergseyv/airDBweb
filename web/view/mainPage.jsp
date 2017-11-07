@@ -12,7 +12,7 @@
     <hr width="50%">
     <p><h2>Great, it's done!</h2>
     <p>Now we have 3 tables: <samp><b>"aircrafts"</b></samp>, <samp><b>"companies"</b></samp> and <samp><b>"ownership"</b></samp>.
-    <p>You can <b>insert</b>, <b>update</b>, and <b>delete</b> records from tables.
+    <p>You can <b>Add</b>, <b>Update</b>, and <b>Delete</b> records from tables.
     <p>Also, you can scroll down the page and see several JOIN-queries.
     <p>
     <hr width="50%">
@@ -26,9 +26,9 @@
             <samp><h2>aircrafts</h2></samp>
             <table border="2" width="90%"  bgcolor="#ffcccc">
                 <tr align="center">
-                    <td><b><samp>insert</samp></b></td>
-                    <td><b><samp>update</samp></b></td>
-                    <td><b><samp>delete</samp></b></td>
+                    <td><b><samp><a href="addaircraft" title="Add new aircraft">Add</a></samp></b></td>
+                    <td><b><samp><a href="updateaircraft" title="Update aircraft">Update</a></samp></b></td>
+                    <td><b><samp><a href="deleteaircraft" title="Delete aircraft">Delete</a></samp></b></td>
                 </tr>
             </table>
             <hr width="50%">
