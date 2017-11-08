@@ -1,6 +1,7 @@
 package model;
 
 import model.mainObjects.Aircraft;
+import model.mainObjects.Company;
 
 import java.sql.*;
 /**
@@ -36,11 +37,9 @@ public class RestoreDB {
         doQuery(conn, Constants.CREATE_COMPANIES);
         doQuery(conn, Constants.CREATE_OWNERSHIP);
     }
-    /* ========================================================================== */
 
 
     /* заполняем таблицу самолетов ============================================== */
-
     private static void addAircrafts (Connection conn) {
         try {
             PreparedStatement pst = conn.prepareStatement(Constants.ADD_AIRCRAFTS);
@@ -60,39 +59,28 @@ public class RestoreDB {
             e.printStackTrace();
         }
     }
-    /* ========================================================================== */
 
 
     /* заполняем таблицу авиакомпаний =========================================== */
-    private static void addCompanie (PreparedStatement pst, String name, String country){
+    private static void addCompanies (Connection conn) {
         try {
 
-            pst.setString(1, name);
-            pst.setString(2, country);
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static void addCompanies (Connection conn) {
-        try {
             PreparedStatement pst = conn.prepareStatement(Constants.ADD_COMPANIES);
-            addCompanie(pst, "Emirates", "United Arab Emirates");
-            addCompanie(pst, "Air China", "China");
-            addCompanie(pst, "All Nippon Airways", "Japan");
-            addCompanie(pst, "Jet Airways", "India");
-            addCompanie(pst, "Aeroflot", "Russian Federation");
-            addCompanie(pst, "Lufthansa", "Germany");
-            addCompanie(pst, "American Airlines", "USA");
-            addCompanie(pst, "Alitalia", "Italy");
-            addCompanie(pst, "Ryanair", "Ireland");
+
+            Company.add(pst, new Company("Emirates", "United Arab Emirates"));
+            Company.add(pst, new Company("Air China", "China"));
+            Company.add(pst, new Company("All Nippon Airways", "Japan"));
+            Company.add(pst, new Company("Jet Airways", "India"));
+            Company.add(pst, new Company("Aeroflot", "Russian Federation"));
+            Company.add(pst, new Company("Lufthansa", "Germany"));
+            Company.add(pst, new Company("American Airlines", "USA"));
+            Company.add(pst, new Company("Alitalia", "Italy"));
+            Company.add(pst, new Company("Ryanair", "Ireland"));
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    /* ========================================================================== */
 
 
     /* заполняем таблицу отношений "Компания - самолеты" ======================== */
