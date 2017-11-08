@@ -38,12 +38,12 @@ public final class Constants {
                     " VALUES (?, ?, ?, ?) ";
 
     public static final String ADD_COMPANIES =
-            " INSERT INTO companies (id_companies, name, country ) " +
-                    " VALUES (?, ?, ?) ";
+            " INSERT INTO companies (name, country ) " +
+                    " VALUES (?, ?) ";
 
     public static final String ADD_OWNERSHIP =
-            " INSERT INTO ownership (id_ownership, id_companies, id_aircraft, quantity ) " +
-                    " VALUES (?, ?, ?, ?) ";
+            " INSERT INTO ownership (id_companies, id_aircraft, quantity ) " +
+                    " VALUES (?, ?, ?) ";
 
     public static final String SELECT_ALL_AIRCRAFTS = " SELECT * from aircrafts ";
     public static final String SELECT_ALL_COMPANIES = " SELECT * from companies ";

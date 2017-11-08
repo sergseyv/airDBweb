@@ -33,15 +33,6 @@
         <url-pattern>/addaircraft</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>addAircraftServletShow</servlet-name>
-        <servlet-class>ctrls.addAircraftServletShow</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>addAircraftServletShow</servlet-name>
-        <url-pattern>/addaircraftshow</url-pattern>
-    </servlet-mapping>
-
 
 
     <servlet>
