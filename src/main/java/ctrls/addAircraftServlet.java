@@ -1,7 +1,8 @@
 package ctrls;
 
 import model.DBConnection;
-import model.resultObjects.*;
+import model.Input;
+import model.mainObjects.Aircraft;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,23 +20,29 @@ public class addAircraftServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        ObjAircraft aircraft = new ObjAircraft();
-        aircraft.setName(request.getParameter("name"));
-        aircraft.setPassengers(Integer.parseInt(request.getParameter("passengers")));
-        aircraft.setMaxWeightKg(Integer.parseInt(request.getParameter("maxweight")));
-        aircraft.setMaxRangeKm(Integer.parseInt(request.getParameter("maxrange")));
+        Aircraft aircraft = new Aircraft();
 
-        ObjAircraft.add(aircraft);
+        String name = request.getParameter("name");
+        String passengers = request.getParameter("passengers");
+        String maxweight = request.getParameter("maxweight");
+        String maxrange = request.getParameter("maxrange");
+
+        if (Input.correct(name)) aircraft.setName(name);
+        if (Input.correct(passengers)) aircraft.setPassengers(Integer.parseInt(passengers));
+        if (Input.correct(maxweight)) aircraft.setMaxWeightKg(Integer.parseInt(maxweight));
+        if (Input.correct(maxrange)) aircraft.setMaxRangeKm(Integer.parseInt(maxrange));
+
+        Aircraft.add(aircraft);
 
         doGet(request, response);
-
     }
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Connection conn = DBConnection.getIstance().getConnection();
 
-        request.setAttribute("aircraftsArrayList", ObjAircraft.selectAll(conn));
+        request.setAttribute("aircraftsArrayList", Aircraft.selectAll(conn));
         request.getRequestDispatcher("view/addAirCraft.jsp").forward(request, response);
     }
 }

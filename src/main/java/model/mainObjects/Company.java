@@ -1,4 +1,4 @@
-package model.resultObjects;
+package model.mainObjects;
 
 import model.Constants;
 
@@ -10,12 +10,12 @@ import java.util.Objects;
 /**
  * Created by Seyvach Serg on 01.11.2017.
  */
-public class ResCompany {
+public class Company {
     private int idCompany;
     private String name;
     private String country;
 
-    private ResCompany(int idCompany, String name, String country) {
+    private Company(int idCompany, String name, String country) {
         this.idCompany = idCompany;
         this.name = name;
         this.country = country;
@@ -40,14 +40,14 @@ public class ResCompany {
     }
 
 
-    public static List<ResCompany> selectAll (Connection conn){
+    public static List<Company> selectAll (Connection conn){
 
-        ArrayList<ResCompany> result = new ArrayList <>();
+        ArrayList<Company> result = new ArrayList <>();
 
         try (Statement st = conn.createStatement();
              ResultSet res = st.executeQuery(Constants.SELECT_ALL_COMPANIES)) {
             while (res.next()) {
-                result.add ( new ResCompany(
+                result.add ( new Company(
                         res.getInt("id_companies"),
                         res.getString("name"),
                         res.getString("country"))

@@ -1,4 +1,4 @@
-package model.resultObjects;
+package model.mainObjects;
 
 import model.Constants;
 import model.DBConnection;
@@ -11,14 +11,14 @@ import java.util.Objects;
 /**
  * Created by Seyvach Serg on 01.11.2017.
  */
-public class ObjAircraft {
+public class Aircraft {
     private int idAircraft;
     private String name;
     private int passengers;
     private int maxWeightKg;
     private int maxRangeKm;
 
-    public ObjAircraft(int idAircraft, String name, int passengers, int maxWeightKg, int maxRangeKm) {
+    public Aircraft(int idAircraft, String name, int passengers, int maxWeightKg, int maxRangeKm) {
         this.idAircraft = idAircraft;
         this.name = name;
         this.passengers = passengers;
@@ -26,7 +26,14 @@ public class ObjAircraft {
         this.maxRangeKm = maxRangeKm;
     }
 
-    public ObjAircraft(){}
+    public Aircraft(String name, int passengers, int maxWeightKg, int maxRangeKm) {
+        this.name = name;
+        this.passengers = passengers;
+        this.maxWeightKg = maxWeightKg;
+        this.maxRangeKm = maxRangeKm;
+    }
+
+    public Aircraft(){}
 
 
     public int getIdAircraft() {
@@ -77,14 +84,15 @@ public class ObjAircraft {
     }
 
 
-    public static List<ObjAircraft> selectAll (Connection conn){
+    // "SELECT * from aircrafts"   в список ArrayList
+    public static List<Aircraft> selectAll (Connection conn){
 
-        List <ObjAircraft> result = new ArrayList <>();
+        List <Aircraft> result = new ArrayList <>();
 
         try ( Statement st = conn.createStatement();
               ResultSet res = st.executeQuery(Constants.SELECT_ALL_AIRCRAFTS)) {
             while (res.next()) {
-                result.add ( new ObjAircraft(
+                result.add ( new Aircraft(
                         res.getInt("id_aircraft"),
                         res.getString("name"),
                         res.getInt("passengers"),
@@ -95,17 +103,30 @@ public class ObjAircraft {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return result;
     }
 
 
-    public static void add( ObjAircraft aircraft ){
 
+
+    //  Добавление Aircraft,  3 варианта параметров
+
+    public static void add( Aircraft aircraft ) {
         Connection conn = DBConnection.getIstance().getConnection();
-        try {
-            PreparedStatement pst = conn.prepareStatement(Constants.ADD_AIRCRAFTS);
+        add(conn, aircraft);
+    }
 
+    public static void add( Connection conn, Aircraft aircraft ) {
+        try (PreparedStatement pst = conn.prepareStatement(Constants.ADD_AIRCRAFTS)) {
+            add (pst, aircraft);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void add( PreparedStatement pst, Aircraft aircraft ) {
+        try {
             pst.setString(1, aircraft.name);
             pst.setInt(2, aircraft.passengers);
             pst.setInt(3, aircraft.maxWeightKg);
@@ -116,6 +137,7 @@ public class ObjAircraft {
             e.printStackTrace();
         }
     }
+
 
 
 

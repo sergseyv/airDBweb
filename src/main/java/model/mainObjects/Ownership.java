@@ -1,4 +1,4 @@
-package model.resultObjects;
+package model.mainObjects;
 
 import model.Constants;
 
@@ -10,13 +10,13 @@ import java.util.Objects;
 /**
  * Created by Seyvach Serg on 01.11.2017.
  */
-public class ResOwnership {
+public class Ownership {
     private int idOwnership;
     private int idCompany;
     private int idAircraft;
     private int quantity;
 
-    private ResOwnership(int idOwnership, int idCompany, int idAircraft, int quantity) {
+    private Ownership(int idOwnership, int idCompany, int idAircraft, int quantity) {
         this.idOwnership = idOwnership;
         this.idCompany = idCompany;
         this.idAircraft = idAircraft;
@@ -46,14 +46,14 @@ public class ResOwnership {
     }
 
 
-    public static List<ResOwnership> selectAll (Connection conn){
+    public static List<Ownership> selectAll (Connection conn){
 
-        List <ResOwnership> result = new ArrayList <>();
+        List <Ownership> result = new ArrayList <>();
 
         try ( Statement st = conn.createStatement();
               ResultSet res = st.executeQuery(Constants.SELECT_ALL_OWNERSHIPS)) {
             while (res.next()) {
-                result.add ( new ResOwnership(
+                result.add ( new Ownership(
                         res.getInt("id_ownership"),
                         res.getInt("id_companies"),
                         res.getInt("id_aircraft"),
