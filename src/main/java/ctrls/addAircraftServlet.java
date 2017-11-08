@@ -20,20 +20,21 @@ public class addAircraftServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Aircraft aircraft = new Aircraft();
-
         String name = request.getParameter("name");
-        String passengers = request.getParameter("passengers");
-        String maxweight = request.getParameter("maxweight");
-        String maxrange = request.getParameter("maxrange");
 
-        if (Input.correct(name)) aircraft.setName(name);
-        if (Input.correct(passengers)) aircraft.setPassengers(Integer.parseInt(passengers));
-        if (Input.correct(maxweight)) aircraft.setMaxWeightKg(Integer.parseInt(maxweight));
-        if (Input.correct(maxrange)) aircraft.setMaxRangeKm(Integer.parseInt(maxrange));
+        if (Input.correct(name)) {
 
-        Aircraft.add(aircraft);
+            Aircraft aircraft = new Aircraft();
+            aircraft.setName(name);
 
+            String passengers = request.getParameter("passengers");
+            String maxweight = request.getParameter("maxweight");
+            String maxrange = request.getParameter("maxrange");
+            if (Input.correct(passengers)) aircraft.setPassengers(Integer.parseInt(passengers));
+            if (Input.correct(maxweight)) aircraft.setMaxWeightKg(Integer.parseInt(maxweight));
+            if (Input.correct(maxrange)) aircraft.setMaxRangeKm(Integer.parseInt(maxrange));
+            Aircraft.add(aircraft);
+        }
         doGet(request, response);
     }
 

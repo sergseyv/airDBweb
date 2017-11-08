@@ -12,6 +12,7 @@ import java.util.Objects;
  * Created by Seyvach Serg on 01.11.2017.
  */
 public class Aircraft {
+
     private int idAircraft;
     private String name;
     private int passengers;
@@ -56,10 +57,6 @@ public class Aircraft {
         return maxRangeKm;
     }
 
-
-    public void setIdAircraft(int idAircraft) {
-        this.idAircraft = idAircraft;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -137,9 +134,6 @@ public class Aircraft {
             e.printStackTrace();
         }
     }
-
-
-
 
 
 }

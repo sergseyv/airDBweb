@@ -1,6 +1,7 @@
 package model.mainObjects;
 
 import model.Constants;
+import model.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -23,6 +24,14 @@ public class Ownership {
         this.quantity = quantity;
     }
 
+    public Ownership(int idCompany, int idAircraft, int quantity) {
+        this.idCompany = idCompany;
+        this.idAircraft = idAircraft;
+        this.quantity = quantity;
+    }
+
+    public Ownership() {}
+
     public int getIdOwnership() {
         return idOwnership;
     }
@@ -39,6 +48,17 @@ public class Ownership {
         return quantity;
     }
 
+    public void setIdCompany(int idCompany) {
+        this.idCompany = idCompany;
+    }
+
+    public void setIdAircraft(int idAircraft) {
+        this.idAircraft = idAircraft;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     @Override
     public int hashCode() {
@@ -46,6 +66,7 @@ public class Ownership {
     }
 
 
+    // "SELECT * from ownerships"   в список ArrayList
     public static List<Ownership> selectAll (Connection conn){
 
         List <Ownership> result = new ArrayList <>();
@@ -65,6 +86,35 @@ public class Ownership {
         }
 
         return result;
+    }
+
+
+    //  Добавление Ownership,  3 варианта параметров
+
+    public static void add( Ownership ownership ) {
+        Connection conn = DBConnection.getIstance().getConnection();
+        add(conn, ownership);
+    }
+
+    public static void add( Connection conn, Ownership ownership ) {
+        try (PreparedStatement pst = conn.prepareStatement(Constants.ADD_OWNERSHIP)) {
+            add (pst, ownership);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void add( PreparedStatement pst, Ownership ownership ) {
+        try {
+            pst.setInt(1, ownership.idCompany);
+            pst.setInt(2, ownership.idAircraft);
+            pst.setInt(3, ownership.quantity);
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 

@@ -35,26 +35,5 @@
 
 
 
-    <servlet>
-        <servlet-name>updateAircraftServlet</servlet-name>
-        <servlet-class>ctrls.updateAircraftServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>updateAircraftServlet</servlet-name>
-        <url-pattern>/updateaircraft</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>deleteAircraftServlet</servlet-name>
-        <servlet-class>ctrls.deleteAircraftServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>deleteAircraftServlet</servlet-name>
-        <url-pattern>/deleteaircraft</url-pattern>
-    </servlet-mapping>
-
-
-
-
 
 </web-app>

@@ -16,14 +16,21 @@ public final class Constants {
                     " `passengers` INT NULL, " +
                     " `max_weight__kg` INT NULL, " +
                     " `max_range__km` INT NULL, " +
-                    " PRIMARY KEY (`id_aircraft`)); ";
+                    " PRIMARY KEY (`id_aircraft`)) " +
+                    " ENGINE = InnoDB " +
+                    " DEFAULT CHARACTER SET = utf8 " +
+                    " COLLATE = utf8_general_ci; ";
+
 
     static final String CREATE_COMPANIES =
             " CREATE TABLE `companies` ( " +
                     " `id_companies` INT NOT NULL AUTO_INCREMENT, " +
                     " `name` VARCHAR(30) NULL, " +
                     " `country` VARCHAR(30) NULL, " +
-                    " PRIMARY KEY (`id_companies`)); ";
+                    " PRIMARY KEY (`id_companies`)) " +
+                    " ENGINE = InnoDB " +
+                    " DEFAULT CHARACTER SET = utf8 " +
+                    " COLLATE = utf8_general_ci; ";
 
     static final String CREATE_OWNERSHIP =
             " CREATE TABLE `ownership` ( " +
@@ -31,7 +38,10 @@ public final class Constants {
                     " `id_companies` INT NULL, " +
                     " `id_aircraft` INT NULL, " +
                     " `quantity` INT NULL, " +
-                    " PRIMARY KEY (`id_ownership`)); ";
+                    " PRIMARY KEY (`id_ownership`)) " +
+                    " ENGINE = InnoDB " +
+                    " DEFAULT CHARACTER SET = utf8 " +
+                    " COLLATE = utf8_general_ci; ";
 
     public static final String ADD_AIRCRAFTS =
             " INSERT INTO aircrafts (name, passengers, max_weight__kg, max_range__km) " +
