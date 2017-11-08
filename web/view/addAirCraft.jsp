@@ -41,9 +41,9 @@
                             </label>
                             <br><br>
                             <button type="submit">Add to database</button>
-                            <button type="reset" value="hz">Clear form</button>
-                            <button type="button" value="wewewe">Return to Main Page</button>
+                            <button type="reset">Clear form</button>
                         </form>
+                        <button onclick="location.href='showmainpage'">Return to Main Page</button>
                     </td>
                     <td valign="top">
                         <table border="0" width="90%"  bgcolor="#00331a" align="center">

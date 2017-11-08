@@ -23,7 +23,7 @@ public class showMainPageServlet extends HttpServlet {
 
         Connection conn = DBConnection.getIstance().getConnection();
 
-        request.setAttribute("aircraftsArrayList", ResAircraft.selectAll(conn));
+        request.setAttribute("aircraftsArrayList", ObjAircraft.selectAll(conn));
         request.setAttribute("companiesArrayList", ResCompany.selectAll(conn));
         request.setAttribute("ownershipArrayList", ResOwnership.selectAll(conn));
 

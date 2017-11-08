@@ -16,7 +16,18 @@ import java.sql.Connection;
  */
 @WebServlet(name = "addAircraftServletShow")
 public class addAircraftServletShow extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        ObjAircraft aircraft = new ObjAircraft();
+        aircraft.setName(request.getParameter("name"));
+        aircraft.setPassengers(Integer.parseInt(request.getParameter("passengers")));
+        aircraft.setMaxWeightKg(Integer.parseInt(request.getParameter("maxweight")));
+        aircraft.setMaxRangeKm(Integer.parseInt(request.getParameter("maxrange")));
+
+        ObjAircraft.add(aircraft);
+
+        doGet(request, response);
 
     }
 
@@ -24,7 +35,7 @@ public class addAircraftServletShow extends HttpServlet {
 
         Connection conn = DBConnection.getIstance().getConnection();
 
-        request.setAttribute("aircraftsArrayList", ResAircraft.selectAll(conn));
+        request.setAttribute("aircraftsArrayList", ObjAircraft.selectAll(conn));
         request.getRequestDispatcher("view/addAirCraft.jsp").forward(request, response);
     }
 }

@@ -33,15 +33,15 @@ public final class Constants {
                     " `quantity` INT NULL, " +
                     " PRIMARY KEY (`id_ownership`)); ";
 
-    static final String ADD_AIRCRAFTS =
-            " INSERT INTO aircrafts (id_aircraft, name, passengers, max_weight__kg, max_range__km) " +
-                    " VALUES (?, ?, ?, ?, ?) ";
+    public static final String ADD_AIRCRAFTS =
+            " INSERT INTO aircrafts (name, passengers, max_weight__kg, max_range__km) " +
+                    " VALUES (?, ?, ?, ?) ";
 
-    static final String ADD_COMPANIES =
+    public static final String ADD_COMPANIES =
             " INSERT INTO companies (id_companies, name, country ) " +
                     " VALUES (?, ?, ?) ";
 
-    static final String ADD_OWNERSHIP =
+    public static final String ADD_OWNERSHIP =
             " INSERT INTO ownership (id_ownership, id_companies, id_aircraft, quantity ) " +
                     " VALUES (?, ?, ?, ?) ";
 

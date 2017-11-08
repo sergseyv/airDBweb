@@ -38,14 +38,14 @@ public class RestoreDB {
 
 
     /* заполняем таблицу самолетов ============================================== */
-    private static void addAircraft (PreparedStatement pst, int id, String name,
+    private static void addAircraft (PreparedStatement pst, String name,
                                      int passengers, int max_weight, int max_range){
         try {
-            pst.setInt(1, id);
-            pst.setString(2, name);
-            pst.setInt(3, passengers);
-            pst.setInt(4, max_weight);
-            pst.setInt(5, max_range);
+
+            pst.setString(1, name);
+            pst.setInt(2, passengers);
+            pst.setInt(3, max_weight);
+            pst.setInt(4, max_range);
             pst.executeUpdate();
 
         } catch (SQLException e) {
@@ -56,17 +56,17 @@ public class RestoreDB {
     static void addAircrafts (Connection conn) {
         try {
             PreparedStatement pst = conn.prepareStatement(Constants.ADD_AIRCRAFTS);
-            addAircraft(pst, 1,"Airbus A319", 156, 75000, 6850);
-            addAircraft(pst, 2,"Airbus A320", 180, 77000, 6150);
-            addAircraft(pst, 3,"Airbus A321", 220, 93500, 5950);
-            addAircraft(pst, 4,"Airbus A330", 335, 233000, 10800);
-            addAircraft(pst, 5,"Airbus A350", 440, 268000, 15000);
-            addAircraft(pst, 6,"Airbus A380", 525, 560000, 12000);
-            addAircraft(pst, 7,"Boeing 737-500", 132, 52390, 5200);
-            addAircraft(pst, 8,"Boeing 747-400ER", 524, 412000, 14205);
-            addAircraft(pst, 9,"Boeing 767-200ER", 255, 179000, 12200);
-            addAircraft(pst, 10,"Boeing 777-200ER", 400, 297560, 14260);
-            addAircraft(pst, 11,"Boeing 787 Dreamliner", 290, 254000, 14140);
+            addAircraft(pst, "Airbus A319", 156, 75000, 6850);
+            addAircraft(pst, "Airbus A320", 180, 77000, 6150);
+            addAircraft(pst, "Airbus A321", 220, 93500, 5950);
+            addAircraft(pst, "Airbus A330", 335, 233000, 10800);
+            addAircraft(pst, "Airbus A350", 440, 268000, 15000);
+            addAircraft(pst, "Airbus A380", 525, 560000, 12000);
+            addAircraft(pst, "Boeing 737-500", 132, 52390, 5200);
+            addAircraft(pst, "Boeing 747-400ER", 524, 412000, 14205);
+            addAircraft(pst, "Boeing 767-200ER", 255, 179000, 12200);
+            addAircraft(pst, "Boeing 777-200ER", 400, 297560, 14260);
+            addAircraft(pst, "Boeing 787 Dreamliner", 290, 254000, 14140);
         } catch (SQLException e) {
             e.printStackTrace();
         }
