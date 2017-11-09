@@ -14,8 +14,19 @@
             <p>
             <table border="0" cellpadding="5" width="90%" align="center">
                 <tr>
-                    <td align="right" width="40%">
+                    <td align="right" width="40%" >
                         <h2><samp>Update aircraft</samp></h2>
+                        <table border="0", width="100%" >
+                          <tr>
+                            <td align="right">
+                              <small>
+                                Select ID of the record you want to edit.<br>
+                                Then fill the fields you want to change. <br>
+                                Clear fields remain unchanged.
+                              </small>
+                            </td>
+                          </tr>
+                        </table>
                     </td>
                     <td align="center">
                         <h2><samp>Table "aircrafts"</samp></h2>
@@ -50,7 +61,7 @@
                                 <input type="text" name="maxrange" pattern="^[0-9]+">
                             </label>
                             <br><br>
-                            <button type="submit">Add to database</button>
+                            <button type="submit">Update</button>
                             <button type="reset">Clear form</button>
                         </form>
                         <button onclick="location.href='showmainpage'">Return to Main Page</button>
