@@ -52,6 +52,33 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>updAircraftServlet</servlet-name>
+        <servlet-class>ctrls.updAircraftServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updAircraftServlet</servlet-name>
+        <url-pattern>/updaircraft</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>updCompanyServlet</servlet-name>
+        <servlet-class>ctrls.updCompanyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updCompanyServlet</servlet-name>
+        <url-pattern>/updcompany</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>updOwnershipServlet</servlet-name>
+        <servlet-class>ctrls.updOwnershipServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updOwnershipServlet</servlet-name>
+        <url-pattern>/updownership</url-pattern>
+    </servlet-mapping>
+
 
 
 </web-app>

@@ -27,8 +27,8 @@
             <table border="2" width="90%"  bgcolor="#ffcccc">
                 <tr align="center">
                     <td><b><samp><a href="addaircraft" title="Add new aircraft">Add</a></samp></b></td>
-                    <td><b><samp><a href="updateaircraft" title="Update aircraft">Update</a></samp></b></td>
-                    <td><b><samp><a href="deleteaircraft" title="Delete aircraft">Delete</a></samp></b></td>
+                    <td><b><samp><a href="updaircraft" title="Update aircraft">Update</a></samp></b></td>
+                    <td><b><samp><a href="delaircraft" title="Delete aircraft">Delete</a></samp></b></td>
                 </tr>
             </table>
             <hr width="50%">
@@ -62,8 +62,8 @@
             <table border="2" width="90%"  bgcolor="#ffcccc">
                 <tr align="center">
                     <td><b><samp><a href="addcompany" title="Add new company">Add</a></samp></b></td>
-                    <td><b><samp><a href="updatecompany" title="Update company">Update</a></samp></b></td>
-                    <td><b><samp><a href="deletecompany" title="Delete company">Delete</a></samp></b></td>
+                    <td><b><samp><a href="updcompany" title="Update company">Update</a></samp></b></td>
+                    <td><b><samp><a href="delcompany" title="Delete company">Delete</a></samp></b></td>
                 </tr>
             </table>
             <hr width="50%">
@@ -93,8 +93,8 @@
             <table border="2" width="90%"  bgcolor="#ffcccc">
                 <tr align="center">
                     <td><b><samp><a href="addownership" title="Add new ownership">Add</a></samp></b></td>
-                    <td><b><samp><a href="updateownership" title="Update ownership">Update</a></samp></b></td>
-                    <td><b><samp><a href="deleteownership" title="Delete ownership">Delete</a></samp></b></td>
+                    <td><b><samp><a href="updownership" title="Update ownership">Update</a></samp></b></td>
+                    <td><b><samp><a href="delownership" title="Delete ownership">Delete</a></samp></b></td>
                 </tr>
             </table>
             <hr width="50%">
