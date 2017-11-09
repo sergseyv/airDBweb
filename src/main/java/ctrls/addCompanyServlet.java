@@ -1,6 +1,7 @@
 package ctrls;
 
 import model.DBConnection;
+import model.Input;
 import model.mainObjects.Aircraft;
 import model.mainObjects.Company;
 
@@ -19,13 +20,28 @@ import java.sql.Connection;
 public class addCompanyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String name = request.getParameter("name");
+
+        if (Input.correct(name)) {
+
+            Company company = new Company();
+            company.setName(name);
+
+            String country = request.getParameter("country");
+
+            if (Input.correct(country)) company.setCountry(country);
+
+            Company.add(company);
+        }
+        doGet(request, response);
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Connection conn = DBConnection.getIstance().getConnection();
 
-        request.setAttribute("companyArrayList", Company.selectAll(conn));
+        request.setAttribute("companiesArrayList", Company.selectAll(conn));
         request.getRequestDispatcher("view/addCompany.jsp").forward(request, response);
 
     }

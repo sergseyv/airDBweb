@@ -14,7 +14,7 @@
             <p>
             <table border="0" cellpadding="5" width="90%" align="center">
                 <tr>
-                    <td align="center">
+                    <td align="right" width="40%">
                         <h2><samp>Add aircraft</samp></h2>
                     </td>
                     <td align="center">
@@ -45,7 +45,7 @@
                         </form>
                         <button onclick="location.href='showmainpage'">Return to Main Page</button>
                     </td>
-                    <td valign="top">
+                    <td valign="top" align="center">
                         <table border="0" width="90%"  bgcolor="#00331a" align="center">
                             <thead>
                             <tr align="center" bgcolor="#b3ffd9">

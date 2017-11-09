@@ -126,7 +126,7 @@
 <p>
 <div align="center">
 <hr width="50%">
-<p><h2>Some JOIN-queries</h2>
+<p><h2>Several JOIN-queries</h2>
 <p>
 <hr width="50%">
 </div>
