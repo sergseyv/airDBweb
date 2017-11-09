@@ -15,7 +15,7 @@
             <table border="0" cellpadding="5" width="90%" align="center">
                 <tr>
                     <td align="right" width="40%">
-                        <h2><samp>Add aircraft</samp></h2>
+                        <h2><samp>Update aircraft</samp></h2>
                     </td>
                     <td align="center">
                         <h2><samp>Table "aircrafts"</samp></h2>
@@ -24,6 +24,16 @@
                 <tr>
                     <td align="right" valign="top">
                         <form method="post">
+                            <label>aircraft ID:
+                               <select name="id">
+                                  <c:forEach var="aircraftsTable" items="${aircraftsArrayList}">
+                                     <option value="${aircraftsTable.idAircraft}">
+                                        ${aircraftsTable.idAircraft}
+                                     </option>
+                                  </c:forEach>
+                               </select>
+                            </label>
+                            <br><br>
                             <label>aircraft name:
                                 <input type="text" name="name">
                             </label>

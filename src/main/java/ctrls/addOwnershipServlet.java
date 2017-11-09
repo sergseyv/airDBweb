@@ -41,6 +41,7 @@ public class addOwnershipServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Connection conn = DBConnection.getIstance().getConnection();
 
         request.setAttribute("ownershipArrayList", Ownership.selectAll(conn));
