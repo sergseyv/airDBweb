@@ -33,6 +33,24 @@
         <url-pattern>/addaircraft</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>addCompanyServlet</servlet-name>
+        <servlet-class>ctrls.addCompanyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addCompanyServlet</servlet-name>
+        <url-pattern>/addcompany</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addOwnershipServlet</servlet-name>
+        <servlet-class>ctrls.addOwnershipServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addOwnershipServlet</servlet-name>
+        <url-pattern>/addownership</url-pattern>
+    </servlet-mapping>
+
 
 
 

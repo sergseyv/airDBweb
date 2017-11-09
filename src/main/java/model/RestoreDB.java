@@ -2,6 +2,7 @@ package model;
 
 import model.mainObjects.Aircraft;
 import model.mainObjects.Company;
+import model.mainObjects.Ownership;
 
 import java.sql.*;
 /**
@@ -64,9 +65,7 @@ public class RestoreDB {
     /* заполняем таблицу авиакомпаний =========================================== */
     private static void addCompanies (Connection conn) {
         try {
-
             PreparedStatement pst = conn.prepareStatement(Constants.ADD_COMPANIES);
-
             Company.add(pst, new Company("Emirates", "United Arab Emirates"));
             Company.add(pst, new Company("Air China", "China"));
             Company.add(pst, new Company("All Nippon Airways", "Japan"));
@@ -84,57 +83,42 @@ public class RestoreDB {
 
 
     /* заполняем таблицу отношений "Компания - самолеты" ======================== */
-    private static void addOwnership (PreparedStatement pst, int id_companies,
-                                      int id_aircraft, int quantity){
-        try {
-
-            pst.setInt(1, id_companies);
-            pst.setInt(2, id_aircraft);
-            pst.setInt(3, quantity);
-            pst.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static void addOwnerships (Connection conn) {
+        static void addOwnerships (Connection conn) {
         try {
             PreparedStatement pst = conn.prepareStatement(Constants.ADD_OWNERSHIP);
-            addOwnership(pst,1, 6, 23);
-            addOwnership(pst,1, 8, 45);
-            addOwnership(pst,1, 10, 11);
-            addOwnership(pst,1, 11, 7);
-            addOwnership(pst,2, 3, 73);
-            addOwnership(pst,2, 10, 52);
-            addOwnership(pst,2, 5, 18);
-            addOwnership(pst,3, 4, 21);
-            addOwnership(pst,3, 8, 38);
-            addOwnership(pst, 3, 9, 41);
-            addOwnership(pst, 4, 9, 73);
-            addOwnership(pst, 4, 4, 43);
-            addOwnership(pst, 5, 1, 28);
-            addOwnership(pst, 5, 2, 36);
-            addOwnership(pst, 5, 4, 41);
-            addOwnership(pst, 5, 8, 56);
-            addOwnership(pst, 6, 7, 57);
-            addOwnership(pst, 6, 3, 19);
-            addOwnership(pst, 6, 11, 33);
-            addOwnership(pst, 7, 3, 68);
-            addOwnership(pst, 7, 5, 72);
-            addOwnership(pst, 7, 8, 45);
-            addOwnership(pst, 7, 9, 24);
-            addOwnership(pst, 8, 6, 37);
-            addOwnership(pst, 8, 1, 34);
-            addOwnership(pst, 8, 7, 45);
-            addOwnership(pst, 9, 2, 43);
-            addOwnership(pst, 9, 7, 15);
-            addOwnership(pst, 9, 11, 29);
+            Ownership.add(pst, new Ownership(1, 6, 23));
+            Ownership.add(pst, new Ownership(1, 8, 45));
+            Ownership.add(pst, new Ownership(1, 10, 11));
+            Ownership.add(pst, new Ownership(1, 11, 7));
+            Ownership.add(pst, new Ownership(2, 3, 73));
+            Ownership.add(pst, new Ownership(2, 10, 52));
+            Ownership.add(pst, new Ownership(2, 5, 18));
+            Ownership.add(pst, new Ownership(3, 4, 21));
+            Ownership.add(pst, new Ownership(3, 8, 38));
+            Ownership.add(pst, new Ownership(3, 9, 41));
+            Ownership.add(pst, new Ownership(4, 9, 73));
+            Ownership.add(pst, new Ownership(4, 4, 43));
+            Ownership.add(pst, new Ownership(5, 1, 28));
+            Ownership.add(pst, new Ownership(5, 2, 36));
+            Ownership.add(pst, new Ownership(5, 4, 41));
+            Ownership.add(pst, new Ownership(5, 8, 56));
+            Ownership.add(pst, new Ownership(6, 7, 57));
+            Ownership.add(pst, new Ownership(6, 3, 19));
+            Ownership.add(pst, new Ownership(6, 11, 33));
+            Ownership.add(pst, new Ownership(7, 3, 68));
+            Ownership.add(pst, new Ownership(7, 5, 72));
+            Ownership.add(pst, new Ownership(7, 8, 45));
+            Ownership.add(pst, new Ownership(7, 9, 24));
+            Ownership.add(pst, new Ownership(8, 6, 37));
+            Ownership.add(pst, new Ownership(8, 1, 34));
+            Ownership.add(pst, new Ownership(8, 7, 45));
+            Ownership.add(pst, new Ownership(9, 2, 43));
+            Ownership.add(pst, new Ownership(9, 7, 15));
+            Ownership.add(pst, new Ownership(9, 11, 29));
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    /* ========================================================================== */
 
 }

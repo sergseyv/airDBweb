@@ -61,9 +61,9 @@
 
             <table border="2" width="90%"  bgcolor="#ffcccc">
                 <tr align="center">
-                    <td><b><samp>insert</samp></b></td>
-                    <td><b><samp>update</samp></b></td>
-                    <td><b><samp>delete</samp></b></td>
+                    <td><b><samp><a href="addcompany" title="Add new company">Add</a></samp></b></td>
+                    <td><b><samp><a href="updatecompany" title="Update company">Update</a></samp></b></td>
+                    <td><b><samp><a href="deletecompany" title="Delete company">Delete</a></samp></b></td>
                 </tr>
             </table>
             <hr width="50%">
@@ -92,9 +92,9 @@
 
             <table border="2" width="90%"  bgcolor="#ffcccc">
                 <tr align="center">
-                    <td><b><samp>insert</samp></b></td>
-                    <td><b><samp>update</samp></b></td>
-                    <td><b><samp>delete</samp></b></td>
+                    <td><b><samp><a href="addownership" title="Add new ownership">Add</a></samp></b></td>
+                    <td><b><samp><a href="updateownership" title="Update ownership">Update</a></samp></b></td>
+                    <td><b><samp><a href="deleteownership" title="Delete ownership">Delete</a></samp></b></td>
                 </tr>
             </table>
             <hr width="50%">
