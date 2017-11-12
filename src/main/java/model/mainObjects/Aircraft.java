@@ -158,7 +158,7 @@ public class Aircraft {
             StringBuilder query = new StringBuilder("UPDATE aircrafts SET ");
 
             if ( name != null )
-                query.append("name = \"").append(name).append("\", ");
+                query.append("name = '").append(name).append("', ");
             if ( passengers >= 0 )
                 query.append("passengers = ").append(passengers).append(", ");
             if ( maxweight >= 0 )

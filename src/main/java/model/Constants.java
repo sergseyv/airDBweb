@@ -10,35 +10,34 @@ public final class Constants {
     static final String DROP_OWNERSHIP = "DROP TABLE IF EXISTS ownership; ";
 
     static final String CREATE_AIRCRAFTS =
-            " CREATE TABLE `aircrafts` ( " +
-                    " `id_aircraft` INT NOT NULL AUTO_INCREMENT, " +
-                    " `name` VARCHAR(30) NULL, " +
-                    " `passengers` INT NULL, " +
-                    " `max_weight__kg` INT NULL, " +
-                    " `max_range__km` INT NULL, " +
-                    " PRIMARY KEY (`id_aircraft`)) " +
+            " CREATE TABLE aircrafts ( " +
+                    " id_aircraft INT NOT NULL AUTO_INCREMENT, " +
+                    " name VARCHAR(30) NULL, " +
+                    " passengers INT NULL, " +
+                    " max_weight__kg INT NULL, " +
+                    " max_range__km INT NULL, " +
+                    " PRIMARY KEY (id_aircraft)) " +
                     " ENGINE = InnoDB " +
                     " DEFAULT CHARACTER SET = utf8 " +
                     " COLLATE = utf8_general_ci; ";
 
-
     static final String CREATE_COMPANIES =
-            " CREATE TABLE `companies` ( " +
-                    " `id_companies` INT NOT NULL AUTO_INCREMENT, " +
-                    " `name` VARCHAR(30) NULL, " +
-                    " `country` VARCHAR(30) NULL, " +
-                    " PRIMARY KEY (`id_companies`)) " +
+            " CREATE TABLE companies ( " +
+                    " id_companies INT NOT NULL AUTO_INCREMENT, " +
+                    " name VARCHAR(30) NULL, " +
+                    " country VARCHAR(30) NULL, " +
+                    " PRIMARY KEY (id_companies)) " +
                     " ENGINE = InnoDB " +
                     " DEFAULT CHARACTER SET = utf8 " +
                     " COLLATE = utf8_general_ci; ";
 
     static final String CREATE_OWNERSHIP =
-            " CREATE TABLE `ownership` ( " +
-                    " `id_ownership` INT NOT NULL AUTO_INCREMENT, " +
-                    " `id_companies` INT NULL, " +
-                    " `id_aircraft` INT NULL, " +
-                    " `quantity` INT NULL, " +
-                    " PRIMARY KEY (`id_ownership`)) " +
+            " CREATE TABLE ownership ( " +
+                    " id_ownership INT NOT NULL AUTO_INCREMENT, " +
+                    " id_companies INT NULL, " +
+                    " id_aircraft INT NULL, " +
+                    " quantity INT NULL, " +
+                    " PRIMARY KEY (id_ownership)) " +
                     " ENGINE = InnoDB " +
                     " DEFAULT CHARACTER SET = utf8 " +
                     " COLLATE = utf8_general_ci; ";
