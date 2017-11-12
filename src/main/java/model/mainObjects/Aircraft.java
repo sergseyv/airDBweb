@@ -2,6 +2,7 @@ package model.mainObjects;
 
 import model.Constants;
 import model.DBConnection;
+import model.RestoreDB;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -154,29 +155,24 @@ public class Aircraft {
 
         if ( ( name != null ) || ( passengers >= 0 ) || ( maxweight >= 0 ) || ( maxrange >= 0 ) ) {
 
-            StringBuilder query = new StringBuilder("UPDATE `aircrafts` SET ");
+            StringBuilder query = new StringBuilder("UPDATE aircrafts SET ");
 
             if ( name != null )
-                query.append("name = `").append(name).append("`, ");
+                query.append("name = \"").append(name).append("\", ");
             if ( passengers >= 0 )
-                query.append("passengers = `").append(passengers).append("`, ");
+                query.append("passengers = ").append(passengers).append(", ");
             if ( maxweight >= 0 )
-                query.append("max_weight__kg = `").append(maxweight).append("`, ");
+                query.append("max_weight__kg = ").append(maxweight).append(", ");
             if ( maxrange >= 0 )
-                query.append("max_range__km = `").append(maxrange).append("`, ");
+                query.append("max_range__km = ").append(maxrange).append(", ");
 
-            System.out.println(query);
-            System.out.println(query.length());
-           
+            query.deleteCharAt(query.length()-2);   // удаляем последнюю запятую
+
+            query.append("WHERE id_aircraft = ").append(id).append(";");
+
+            RestoreDB.doQuery(conn, query.toString());
 
         }
-
-
-
-
-      //return one.substring(0, one.length()-1);
-
-
 
     }
 

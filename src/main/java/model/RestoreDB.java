@@ -19,16 +19,15 @@ public class RestoreDB {
 
 
     /* пересоздаем таблицы (дропаем старые, если они есть и создаем заново) ======*/
-    private static void doQuery(Connection conn, String sql){
-        try {
-            Statement st = conn.createStatement();
+    public static void doQuery(Connection conn, String sql){
+        try (Statement st = conn.createStatement()) {
             st.executeUpdate(sql);
             st.close();
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     private static void initializeDB(Connection conn){
         doQuery(conn, Constants.DROP_AIRCRAFTS);

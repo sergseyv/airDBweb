@@ -36,63 +36,6 @@ public class updAircraftServlet extends HttpServlet {
 
         Aircraft.upd(aircraft);
 
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-
-
-        int id1 = aircraft.getIdAircraft();
-        String name1 = aircraft.getName();
-        int passengers1 = aircraft.getPassengers();
-        int maxweight1 = aircraft.getMaxWeightKg();
-        int maxrange1 = aircraft.getMaxRangeKm();
-
-        if ( ( name1 != null ) || ( passengers1 >= 0 ) || ( maxweight1 >= 0 ) || ( maxrange1 >= 0 ) ) {
-
-            StringBuilder query = new StringBuilder("UPDATE `aircrafts` SET ");
-
-            if ( name1 != null )
-                query.append("name = `").append(name1).append("`, ");
-            if ( passengers1 >= 0 )
-                query.append("passengers = `").append(passengers1).append("`, ");
-            if ( maxweight1 >= 0 )
-                query.append("max_weight__kg = `").append(maxweight1).append("`, ");
-            if ( maxrange1 >= 0 )
-                query.append("max_range__km = `").append(maxrange1).append("`, ");
-
-        }
-
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         doGet(request, response);
 
     }
