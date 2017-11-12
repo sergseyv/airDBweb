@@ -17,7 +17,7 @@
                     <td align="right" width="40%">
                         <h2><samp>Add ownership</samp></h2>
                     </td>
-                    <td align="center">
+                    <td align="center" valign="bottom">
                         <h2><samp>Table "ownerships"</samp></h2>
                     </td>
                 </tr>

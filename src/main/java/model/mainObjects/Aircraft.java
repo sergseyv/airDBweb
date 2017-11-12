@@ -57,6 +57,9 @@ public class Aircraft {
         return maxRangeKm;
     }
 
+    public void setIdAircraft(int idAircraft) {
+        this.idAircraft = idAircraft;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -134,6 +137,53 @@ public class Aircraft {
             e.printStackTrace();
         }
     }
+
+
+    public static void upd ( Aircraft aircraft ) {
+        Connection conn = DBConnection.getIstance().getConnection();
+        upd (conn, aircraft);
+    }
+
+    public static void upd ( Connection conn, Aircraft aircraft ) {
+
+        int id = aircraft.getIdAircraft();
+        String name = aircraft.getName();
+        int passengers = aircraft.getPassengers();
+        int maxweight = aircraft.getMaxWeightKg();
+        int maxrange = aircraft.getMaxRangeKm();
+
+        if ( ( name != null ) || ( passengers >= 0 ) || ( maxweight >= 0 ) || ( maxrange >= 0 ) ) {
+
+            StringBuilder query = new StringBuilder("UPDATE `aircrafts` SET ");
+
+            if ( name != null )
+                query.append("name = `").append(name).append("`, ");
+            if ( passengers >= 0 )
+                query.append("passengers = `").append(passengers).append("`, ");
+            if ( maxweight >= 0 )
+                query.append("max_weight__kg = `").append(maxweight).append("`, ");
+            if ( maxrange >= 0 )
+                query.append("max_range__km = `").append(maxrange).append("`, ");
+
+            System.out.println(query);
+            System.out.println(query.length());
+           
+
+        }
+
+
+
+
+      //return one.substring(0, one.length()-1);
+
+
+
+    }
+
+
+
+
+
 
 
 }

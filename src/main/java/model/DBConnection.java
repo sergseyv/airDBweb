@@ -30,6 +30,7 @@ public class DBConnection {
                 Driver drv = new FabricMySQLDriver();
                 DriverManager.registerDriver(drv);
                 conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                conn.setAutoCommit(true);
 
             } catch (SQLException e) {
                 e.printStackTrace();

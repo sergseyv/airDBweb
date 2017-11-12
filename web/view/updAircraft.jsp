@@ -22,13 +22,13 @@
                               <small>
                                 Select ID of the record you want to edit.<br>
                                 Then fill the fields you want to change. <br>
-                                Clear fields remain unchanged.
+                                Blank fields remain unchanged.
                               </small>
                             </td>
                           </tr>
                         </table>
                     </td>
-                    <td align="center">
+                    <td align="center" valign="bottom">
                         <h2><samp>Table "aircrafts"</samp></h2>
                     </td>
                 </tr>

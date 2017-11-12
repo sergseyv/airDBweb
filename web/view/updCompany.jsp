@@ -28,7 +28,7 @@
                             </tr>
                         </table>
                     </td>
-                    <td align="center">
+                    <td align="center" valign="bottom">
                         <h2><samp>Table "companies"</samp></h2>
                     </td>
                 </tr>
