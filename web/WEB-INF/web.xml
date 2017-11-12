@@ -80,5 +80,32 @@
     </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>delAircraftServlet</servlet-name>
+        <servlet-class>ctrls.delAircraftServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>delAircraftServlet</servlet-name>
+        <url-pattern>/delaircraft</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>delCompanyServlet</servlet-name>
+        <servlet-class>ctrls.delCompanyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>delCompanyServlet</servlet-name>
+        <url-pattern>/delcompany</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>delOwnershipServlet</servlet-name>
+        <servlet-class>ctrls.delOwnershipServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>delOwnershipServlet</servlet-name>
+        <url-pattern>/delownership</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

@@ -144,5 +144,17 @@ public class Company {
     }
 
 
+    public static void del(String id){
+
+        Connection conn = DBConnection.getIstance().getConnection();
+        del (conn, id);
+    }
+
+    public static void del ( Connection conn, String id ){
+
+        RestoreDB.doQuery ( conn, "DELETE FROM companies WHERE id_companies =" + id );
+    }
+
+
 
 }

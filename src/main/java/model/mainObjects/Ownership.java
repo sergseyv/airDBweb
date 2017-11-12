@@ -161,5 +161,17 @@ public class Ownership {
 
     }
 
+    public static void del(String id){
+
+        Connection conn = DBConnection.getIstance().getConnection();
+        del (conn, id);
+    }
+
+    public static void del ( Connection conn, String id ){
+
+        RestoreDB.doQuery ( conn, "DELETE FROM ownership WHERE id_ownership =" + id );
+    }
+
+
 
 }

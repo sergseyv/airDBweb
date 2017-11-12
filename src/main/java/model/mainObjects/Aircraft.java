@@ -171,7 +171,17 @@ public class Aircraft {
             RestoreDB.doQuery(conn, query.toString());
 
         }
+    }
 
+    public static void del(String id){
+
+        Connection conn = DBConnection.getIstance().getConnection();
+        del (conn, id);
+    }
+
+    public static void del ( Connection conn, String id ){
+
+        RestoreDB.doQuery ( conn, "DELETE FROM aircrafts WHERE id_aircraft =" + id );
     }
 
 
