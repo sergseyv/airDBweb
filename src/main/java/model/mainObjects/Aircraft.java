@@ -108,8 +108,6 @@ public class Aircraft {
     }
 
 
-
-
     //  Добавление Aircraft,  3 варианта параметров
 
     public static void add( Aircraft aircraft ) {

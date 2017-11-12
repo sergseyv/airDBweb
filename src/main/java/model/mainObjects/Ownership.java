@@ -2,6 +2,7 @@ package model.mainObjects;
 
 import model.Constants;
 import model.DBConnection;
+import model.RestoreDB;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -60,6 +61,10 @@ public class Ownership {
         this.quantity = quantity;
     }
 
+    public void setIdOwnership(int idOwnership) {
+        this.idOwnership = idOwnership;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash( idOwnership, idCompany, idAircraft, quantity);
@@ -115,6 +120,45 @@ public class Ownership {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+
+
+
+
+    public static void upd ( Ownership ownership ) {
+        Connection conn = DBConnection.getIstance().getConnection();
+        upd (conn, ownership);
+    }
+
+    public static void upd ( Connection conn, Ownership ownership ) {
+
+        int idOwnership = ownership.getIdOwnership();
+        int idCompany = ownership.getIdCompany();
+        int idAircraft = ownership.getIdAircraft();
+        int quantity = ownership.getQuantity();
+
+
+
+        if ( ( idCompany >= 0 ) || ( idAircraft >= 0 ) || ( quantity >= 0 ) ) {
+
+            StringBuilder query = new StringBuilder("UPDATE ownership SET ");
+
+            if ( idCompany >= 0 )
+                query.append("id_companies = ").append(idCompany).append(", ");
+            if ( idAircraft >= 0 )
+                query.append("id_aircraft = ").append(idAircraft).append(", ");
+            if ( quantity >= 0 )
+                query.append("quantity = ").append(quantity).append(", ");
+
+            query.deleteCharAt(query.length()-2);   // удаляем последнюю запятую
+
+            query.append("WHERE id_ownership = ").append(idOwnership).append(";");
+
+            RestoreDB.doQuery(conn, query.toString());
+
+        }
+
     }
 
 

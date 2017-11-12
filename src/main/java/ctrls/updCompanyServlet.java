@@ -1,6 +1,8 @@
 package ctrls;
 
 import model.DBConnection;
+import model.Input;
+import model.mainObjects.Aircraft;
 import model.mainObjects.Company;
 
 import javax.servlet.ServletException;
@@ -17,6 +19,22 @@ import java.sql.Connection;
 @WebServlet(name = "updCompanyServlet")
 public class updCompanyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+        Company company = new Company();
+
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String country = request.getParameter("country");
+
+        company.setIdCompany(Integer.parseInt(id));
+        company.setName(Input.correct(name) ? name : null);
+        company.setCountry(Input.correct(country) ? country : null);
+
+        Company.upd(company);
+
+        doGet(request, response);
+
 
     }
 

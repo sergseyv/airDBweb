@@ -2,6 +2,7 @@ package model.mainObjects;
 
 import model.Constants;
 import model.DBConnection;
+import model.RestoreDB;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -48,6 +49,10 @@ public class Company {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public void setIdCompany(int idCompany) {
+        this.idCompany = idCompany;
     }
 
     @Override
@@ -106,10 +111,37 @@ public class Company {
     }
 
 
+    public static void upd ( Company company ) {
+        Connection conn = DBConnection.getIstance().getConnection();
+        upd (conn, company);
+    }
+
+    public static void upd ( Connection conn, Company company ) {
+
+        int idCompany = company.getIdCompany();
+        String name = company.getName();
+        String country = company.getCountry();
+
+        if ( ( name != null ) || ( country != null ) ) {
+
+            StringBuilder query = new StringBuilder("UPDATE companies SET ");
+
+            if ( name != null )
+                query.append("name = '").append(name).append("', ");
+
+            if ( country != null )
+                query.append("country = '").append(country).append("', ");
 
 
+            query.deleteCharAt(query.length()-2);   // удаляем последнюю запятую
 
+            query.append("WHERE id_companies = ").append(idCompany).append(";");
 
+            RestoreDB.doQuery(conn, query.toString());
+
+        }
+
+    }
 
 
 
