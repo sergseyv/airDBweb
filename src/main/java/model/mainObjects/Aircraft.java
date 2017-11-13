@@ -2,7 +2,7 @@ package model.mainObjects;
 
 import model.Constants;
 import model.DbConnection;
-import model.RestoreDB;
+import model.DbWork;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -168,7 +168,7 @@ public class Aircraft {
 
             query.append("WHERE id_aircraft = ").append(id).append(";");
 
-            RestoreDB.doQuery(conn, query.toString());
+            DbWork.doQuery(query.toString());
 
         }
     }
@@ -181,7 +181,7 @@ public class Aircraft {
 
     public static void del ( Connection conn, String id ){
 
-        RestoreDB.doQuery ( conn, "DELETE FROM aircrafts WHERE id_aircraft =" + id );
+        DbWork.doQuery ( "DELETE FROM aircrafts WHERE id_aircraft =" + id );
     }
 
 

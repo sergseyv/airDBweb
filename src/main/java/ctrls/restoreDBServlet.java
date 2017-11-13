@@ -1,6 +1,6 @@
 package ctrls;
 
-import model.*;
+import model.DbWork;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +20,7 @@ public class restoreDBServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RestoreDB.restore();
+        DbWork.restoreDb();
         response.sendRedirect("showmainpage");
     }
 }

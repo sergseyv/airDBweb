@@ -2,7 +2,7 @@ package model.mainObjects;
 
 import model.Constants;
 import model.DbConnection;
-import model.RestoreDB;
+import model.DbWork;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -137,7 +137,7 @@ public class Company {
 
             query.append("WHERE id_companies = ").append(idCompany).append(";");
 
-            RestoreDB.doQuery(conn, query.toString());
+            DbWork.doQuery( query.toString() );
 
         }
 
@@ -152,7 +152,7 @@ public class Company {
 
     public static void del ( Connection conn, String id ){
 
-        RestoreDB.doQuery ( conn, "DELETE FROM companies WHERE id_companies =" + id );
+        DbWork.doQuery ( "DELETE FROM companies WHERE id_companies =" + id );
     }
 
 

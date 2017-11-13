@@ -5,6 +5,7 @@ import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+
 public class DbConnection {
 
     private static final String URL = "jdbc:mysql://localhost:3306/aero_db";
@@ -13,7 +14,6 @@ public class DbConnection {
     private static DbConnection dbconnection = null;
     private Connection conn = null;
     private ComboPooledDataSource poolDS = null;
-
 
     private DbConnection() {
 

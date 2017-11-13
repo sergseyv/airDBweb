@@ -1,46 +1,52 @@
 package model;
 
 import model.mainObjects.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-import java.sql.*;
-/**
- * Created by Seyvach Serg on 23.10.2017.
- */
-public class RestoreDB {
 
-    public static void restore(){
-        Connection conn = DbConnection.getIstance().getConnection();
-        initializeDB (conn);
-        addAircrafts (conn);
-        addCompanies (conn);
-        addOwnerships (conn);
-        DbConnection.getIstance().closeConnection(conn);
+public class DbWork {
+
+    public static void restoreDb(){
+        initializeDB();
+        addAircrafts();
+        addCompanies();
+        addOwnerships();
     }
 
 
-    /* пересоздаем таблицы (дропаем старые, если они есть и создаем заново) ======*/
-    public static void doQuery(Connection conn, String sql){
+    public static void doQuery (String sql){
+        Connection conn = DbConnection.getIstance().getConnection();
+        doQuery(conn, sql);
+        DbConnection.getIstance().closeConnection(conn);
+    }
+
+    private static void doQuery(Connection conn, String sql){
         try (Statement st = conn.createStatement()) {
             st.executeUpdate(sql);
-            st.close();
+//            st.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
 
-    private static void initializeDB(Connection conn){
-        doQuery(conn, Constants.DROP_AIRCRAFTS);
-        doQuery(conn, Constants.DROP_COMPANIES);
-        doQuery(conn, Constants.DROP_OWNERSHIP);
-        doQuery(conn, Constants.CREATE_AIRCRAFTS);
-        doQuery(conn, Constants.CREATE_COMPANIES);
-        doQuery(conn, Constants.CREATE_OWNERSHIP);
+    /* пересоздаем таблицы (дропаем старые, если они есть и создаем заново) ======*/
+    private static void initializeDB(){
+        doQuery(Constants.DROP_AIRCRAFTS);
+        doQuery(Constants.DROP_COMPANIES);
+        doQuery(Constants.DROP_OWNERSHIP);
+        doQuery(Constants.CREATE_AIRCRAFTS);
+        doQuery(Constants.CREATE_COMPANIES);
+        doQuery(Constants.CREATE_OWNERSHIP);
     }
 
 
     /* заполняем таблицу самолетов ============================================== */
-    private static void addAircrafts (Connection conn) {
+    private static void addAircrafts() {
+        Connection conn = DbConnection.getIstance().getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(Constants.ADD_AIRCRAFTS);
             Aircraft.add ( pst, new Aircraft("Airbus A319", 156, 75000, 6850 ) );
@@ -54,15 +60,16 @@ public class RestoreDB {
             Aircraft.add ( pst, new Aircraft("Boeing 767-200ER", 255, 179000, 12200 ) );
             Aircraft.add ( pst, new Aircraft("Boeing 777-200ER", 400, 297560, 14260 ) );
             Aircraft.add ( pst, new Aircraft("Boeing 787 Dreamliner", 290, 254000, 14140 ) );
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        DbConnection.getIstance().closeConnection(conn);
     }
 
 
     /* заполняем таблицу авиакомпаний =========================================== */
-    private static void addCompanies (Connection conn) {
+    private static void addCompanies() {
+        Connection conn = DbConnection.getIstance().getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(Constants.ADD_COMPANIES);
             Company.add(pst, new Company("Emirates", "United Arab Emirates"));
@@ -74,15 +81,16 @@ public class RestoreDB {
             Company.add(pst, new Company("American Airlines", "USA"));
             Company.add(pst, new Company("Alitalia", "Italy"));
             Company.add(pst, new Company("Ryanair", "Ireland"));
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        DbConnection.getIstance().closeConnection(conn);
     }
 
 
     /* заполняем таблицу отношений "Компания - самолеты" ======================== */
-        static void addOwnerships (Connection conn) {
+    private static void addOwnerships() {
+        Connection conn = DbConnection.getIstance().getConnection();
         try {
             PreparedStatement pst = conn.prepareStatement(Constants.ADD_OWNERSHIP);
             Ownership.add(pst, new Ownership(1, 6, 23));
@@ -114,10 +122,10 @@ public class RestoreDB {
             Ownership.add(pst, new Ownership(9, 2, 43));
             Ownership.add(pst, new Ownership(9, 7, 15));
             Ownership.add(pst, new Ownership(9, 11, 29));
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        DbConnection.getIstance().closeConnection(conn);
     }
 
 }

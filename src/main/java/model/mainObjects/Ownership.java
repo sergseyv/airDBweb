@@ -2,7 +2,7 @@ package model.mainObjects;
 
 import model.Constants;
 import model.DbConnection;
-import model.RestoreDB;
+import model.DbWork;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -155,7 +155,7 @@ public class Ownership {
 
             query.append("WHERE id_ownership = ").append(idOwnership).append(";");
 
-            RestoreDB.doQuery(conn, query.toString());
+            DbWork.doQuery( query.toString() );
 
         }
 
@@ -169,7 +169,7 @@ public class Ownership {
 
     public static void del ( Connection conn, String id ){
 
-        RestoreDB.doQuery ( conn, "DELETE FROM ownership WHERE id_ownership =" + id );
+        DbWork.doQuery ( "DELETE FROM ownership WHERE id_ownership =" + id );
     }
 
 
