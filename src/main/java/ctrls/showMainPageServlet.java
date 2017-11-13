@@ -24,7 +24,7 @@ public class showMainPageServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Connection conn = DBConnection.getIstance().getConnection();
+        Connection conn = DbConnection.getIstance().getConnection();
 
         request.setAttribute("aircraftsArrayList", Aircraft.selectAll(conn));
         request.setAttribute("companiesArrayList", Company.selectAll(conn));

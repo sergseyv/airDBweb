@@ -20,7 +20,7 @@ public class restoreDBServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RestoreDB.restore(DBConnection.getIstance().getConnection());
+        RestoreDB.restore();
         response.sendRedirect("showmainpage");
     }
 }

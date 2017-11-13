@@ -1,8 +1,7 @@
 package ctrls;
 
-import model.DBConnection;
+import model.DbConnection;
 import model.Input;
-import model.mainObjects.Aircraft;
 import model.mainObjects.Ownership;
 
 import javax.servlet.ServletException;
@@ -39,7 +38,7 @@ public class updOwnershipServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Connection conn = DBConnection.getIstance().getConnection();
+        Connection conn = DbConnection.getIstance().getConnection();
 
         request.setAttribute("ownershipArrayList", Ownership.selectAll(conn));
         request.getRequestDispatcher("view/updOwnership.jsp").forward(request, response);

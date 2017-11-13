@@ -1,7 +1,7 @@
 package model.mainObjects;
 
 import model.Constants;
-import model.DBConnection;
+import model.DbConnection;
 import model.RestoreDB;
 
 import java.sql.*;
@@ -86,7 +86,7 @@ public class Company {
     //  Добавление Company,  3 варианта параметров
 
     public static void add( Company company ) {
-        Connection conn = DBConnection.getIstance().getConnection();
+        Connection conn = DbConnection.getIstance().getConnection();
         add(conn, company);
     }
 
@@ -112,7 +112,7 @@ public class Company {
 
 
     public static void upd ( Company company ) {
-        Connection conn = DBConnection.getIstance().getConnection();
+        Connection conn = DbConnection.getIstance().getConnection();
         upd (conn, company);
     }
 
@@ -146,7 +146,7 @@ public class Company {
 
     public static void del(String id){
 
-        Connection conn = DBConnection.getIstance().getConnection();
+        Connection conn = DbConnection.getIstance().getConnection();
         del (conn, id);
     }
 

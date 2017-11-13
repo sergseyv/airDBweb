@@ -1,6 +1,6 @@
 package ctrls;
 
-import model.DBConnection;
+import model.DbConnection;
 import model.mainObjects.Aircraft;
 
 import javax.servlet.ServletException;
@@ -25,7 +25,7 @@ public class delAircraftServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Connection conn = DBConnection.getIstance().getConnection();
+        Connection conn = DbConnection.getIstance().getConnection();
 
         request.setAttribute("aircraftsArrayList", Aircraft.selectAll(conn));
         request.getRequestDispatcher("view/delAircraft.jsp").forward(request, response);

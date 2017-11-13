@@ -1,8 +1,7 @@
 package ctrls;
 
-import model.DBConnection;
+import model.DbConnection;
 import model.Input;
-import model.mainObjects.Aircraft;
 import model.mainObjects.Company;
 
 import javax.servlet.ServletException;
@@ -40,7 +39,7 @@ public class updCompanyServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Connection conn = DBConnection.getIstance().getConnection();
+        Connection conn = DbConnection.getIstance().getConnection();
 
         request.setAttribute("companiesArrayList", Company.selectAll(conn));
         request.getRequestDispatcher("view/updCompany.jsp").forward(request, response);

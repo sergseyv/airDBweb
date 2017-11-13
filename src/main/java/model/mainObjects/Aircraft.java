@@ -1,7 +1,7 @@
 package model.mainObjects;
 
 import model.Constants;
-import model.DBConnection;
+import model.DbConnection;
 import model.RestoreDB;
 
 import java.sql.*;
@@ -111,7 +111,7 @@ public class Aircraft {
     //  Добавление Aircraft,  3 варианта параметров
 
     public static void add( Aircraft aircraft ) {
-        Connection conn = DBConnection.getIstance().getConnection();
+        Connection conn = DbConnection.getIstance().getConnection();
         add(conn, aircraft);
     }
 
@@ -139,7 +139,7 @@ public class Aircraft {
 
 
     public static void upd ( Aircraft aircraft ) {
-        Connection conn = DBConnection.getIstance().getConnection();
+        Connection conn = DbConnection.getIstance().getConnection();
         upd (conn, aircraft);
     }
 
@@ -175,7 +175,7 @@ public class Aircraft {
 
     public static void del(String id){
 
-        Connection conn = DBConnection.getIstance().getConnection();
+        Connection conn = DbConnection.getIstance().getConnection();
         del (conn, id);
     }
 

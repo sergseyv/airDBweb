@@ -1,6 +1,6 @@
 package ctrls;
 
-import model.DBConnection;
+import model.DbConnection;
 import model.mainObjects.Ownership;
 
 import javax.servlet.ServletException;
@@ -24,7 +24,7 @@ public class delOwnershipServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Connection conn = DBConnection.getIstance().getConnection();
+        Connection conn = DbConnection.getIstance().getConnection();
 
         request.setAttribute("ownershipArrayList", Ownership.selectAll(conn));
         request.getRequestDispatcher("view/delOwnership.jsp").forward(request, response);

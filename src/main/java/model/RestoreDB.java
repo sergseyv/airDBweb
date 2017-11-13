@@ -1,8 +1,6 @@
 package model;
 
-import model.mainObjects.Aircraft;
-import model.mainObjects.Company;
-import model.mainObjects.Ownership;
+import model.mainObjects.*;
 
 import java.sql.*;
 /**
@@ -10,11 +8,13 @@ import java.sql.*;
  */
 public class RestoreDB {
 
-    public static void restore(Connection conn){
+    public static void restore(){
+        Connection conn = DbConnection.getIstance().getConnection();
         initializeDB (conn);
         addAircrafts (conn);
         addCompanies (conn);
         addOwnerships (conn);
+        DbConnection.getIstance().closeConnection(conn);
     }
 
 

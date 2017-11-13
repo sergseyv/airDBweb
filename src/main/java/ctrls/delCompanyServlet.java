@@ -1,6 +1,6 @@
 package ctrls;
 
-import model.DBConnection;
+import model.DbConnection;
 import model.mainObjects.Company;
 
 import javax.servlet.ServletException;
@@ -24,7 +24,7 @@ public class delCompanyServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Connection conn = DBConnection.getIstance().getConnection();
+        Connection conn = DbConnection.getIstance().getConnection();
 
         request.setAttribute("companiesArrayList", Company.selectAll(conn));
         request.getRequestDispatcher("view/delCompany.jsp").forward(request, response);
