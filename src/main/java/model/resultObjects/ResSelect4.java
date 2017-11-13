@@ -1,6 +1,7 @@
 package model.resultObjects;
 
 import model.Constants;
+import model.DbConnection;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,7 +20,7 @@ public class ResSelect4 {
     private int quantity;
     private int passengers;
 
-    public ResSelect4(String nameCompany, String countryCompany, int quantity, int passengers) {
+    private ResSelect4(String nameCompany, String countryCompany, int quantity, int passengers) {
         this.nameCompany = nameCompany;
         this.countryCompany = countryCompany;
         this.quantity = quantity;
@@ -48,8 +49,9 @@ public class ResSelect4 {
     }
 
 
-    public static List<ResSelect4> selectAll (Connection conn){
+    public static List<ResSelect4> selectAll (){
 
+        Connection conn = DbConnection.getIstance().getConnection();
         List <ResSelect4> result = new ArrayList<>();
 
         try (Statement st = conn.createStatement();
@@ -65,7 +67,7 @@ public class ResSelect4 {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        DbConnection.getIstance().closeConnection(conn);
         return result;
     }
 

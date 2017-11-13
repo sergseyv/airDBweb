@@ -72,8 +72,9 @@ public class Ownership {
 
 
     // "SELECT * from ownerships"   в список ArrayList
-    public static List<Ownership> selectAll (Connection conn){
+    public static List<Ownership> selectAll(){
 
+        Connection conn = DbConnection.getIstance().getConnection();
         List <Ownership> result = new ArrayList <>();
 
         try ( Statement st = conn.createStatement();
@@ -89,22 +90,20 @@ public class Ownership {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        DbConnection.getIstance().closeConnection(conn);
         return result;
     }
 
 
-    //  Добавление Ownership,  3 варианта параметров
-
     public static void add( Ownership ownership ) {
         Connection conn = DbConnection.getIstance().getConnection();
         add(conn, ownership);
+        DbConnection.getIstance().closeConnection(conn);
     }
 
     public static void add( Connection conn, Ownership ownership ) {
         try (PreparedStatement pst = conn.prepareStatement(Constants.ADD_OWNERSHIP)) {
             add (pst, ownership);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -123,22 +122,12 @@ public class Ownership {
     }
 
 
-
-
-
     public static void upd ( Ownership ownership ) {
-        Connection conn = DbConnection.getIstance().getConnection();
-        upd (conn, ownership);
-    }
-
-    public static void upd ( Connection conn, Ownership ownership ) {
 
         int idOwnership = ownership.getIdOwnership();
         int idCompany = ownership.getIdCompany();
         int idAircraft = ownership.getIdAircraft();
         int quantity = ownership.getQuantity();
-
-
 
         if ( ( idCompany >= 0 ) || ( idAircraft >= 0 ) || ( quantity >= 0 ) ) {
 
@@ -156,18 +145,11 @@ public class Ownership {
             query.append("WHERE id_ownership = ").append(idOwnership).append(";");
 
             DbWork.doQuery( query.toString() );
-
         }
-
     }
 
-    public static void del(String id){
 
-        Connection conn = DbConnection.getIstance().getConnection();
-        del (conn, id);
-    }
-
-    public static void del ( Connection conn, String id ){
+    public static void del ( String id ){
 
         DbWork.doQuery ( "DELETE FROM ownership WHERE id_ownership =" + id );
     }

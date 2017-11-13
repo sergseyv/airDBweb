@@ -1,6 +1,7 @@
 package model.resultObjects;
 
 import model.Constants;
+import model.DbConnection;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -49,8 +50,9 @@ public class ResSelect1 {
     }
 
 
-    public static List<ResSelect1> selectAll (Connection conn){
+    public static List<ResSelect1> selectAll (){
 
+        Connection conn = DbConnection.getIstance().getConnection();
         List <ResSelect1> result = new ArrayList<>();
 
         try (Statement st = conn.createStatement();
@@ -66,9 +68,8 @@ public class ResSelect1 {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        DbConnection.getIstance().closeConnection(conn);
         return result;
     }
-
 
 }

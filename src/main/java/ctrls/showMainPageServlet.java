@@ -24,16 +24,14 @@ public class showMainPageServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Connection conn = DbConnection.getIstance().getConnection();
+        request.setAttribute("aircraftsArrayList", Aircraft.selectAll());
+        request.setAttribute("companiesArrayList", Company.selectAll());
+        request.setAttribute("ownershipArrayList", Ownership.selectAll());
 
-        request.setAttribute("aircraftsArrayList", Aircraft.selectAll(conn));
-        request.setAttribute("companiesArrayList", Company.selectAll(conn));
-        request.setAttribute("ownershipArrayList", Ownership.selectAll(conn));
-
-        request.setAttribute("select1ArrayList", ResSelect1.selectAll(conn));
-        request.setAttribute("select2ArrayList", ResSelect2.selectAll(conn));
-        request.setAttribute("select3ArrayList", ResSelect3.selectAll(conn));
-        request.setAttribute("select4ArrayList", ResSelect4.selectAll(conn));
+        request.setAttribute("select1ArrayList", ResSelect1.selectAll());
+        request.setAttribute("select2ArrayList", ResSelect2.selectAll());
+        request.setAttribute("select3ArrayList", ResSelect3.selectAll());
+        request.setAttribute("select4ArrayList", ResSelect4.selectAll());
 
         request.getRequestDispatcher("view/mainPage.jsp").forward(request, response);
 

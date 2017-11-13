@@ -40,7 +40,7 @@ public class updOwnershipServlet extends HttpServlet {
 
         Connection conn = DbConnection.getIstance().getConnection();
 
-        request.setAttribute("ownershipArrayList", Ownership.selectAll(conn));
+        request.setAttribute("ownershipArrayList", Ownership.selectAll());
         request.getRequestDispatcher("view/updOwnership.jsp").forward(request, response);
     }
 }

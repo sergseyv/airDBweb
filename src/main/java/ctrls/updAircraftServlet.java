@@ -44,7 +44,7 @@ public class updAircraftServlet extends HttpServlet {
 
         Connection conn = DbConnection.getIstance().getConnection();
 
-        request.setAttribute("aircraftsArrayList", Aircraft.selectAll(conn));
+        request.setAttribute("aircraftsArrayList", Aircraft.selectAll());
         request.getRequestDispatcher("view/updAircraft.jsp").forward(request, response);
     }
 }

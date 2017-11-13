@@ -26,7 +26,7 @@ public class delCompanyServlet extends HttpServlet {
 
         Connection conn = DbConnection.getIstance().getConnection();
 
-        request.setAttribute("companiesArrayList", Company.selectAll(conn));
+        request.setAttribute("companiesArrayList", Company.selectAll());
         request.getRequestDispatcher("view/delCompany.jsp").forward(request, response);
     }
 }

@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created by Seyvach Serg on 01.11.2017.
- */
+
 public class Company {
     private int idCompany;
     private String name;
@@ -62,8 +60,9 @@ public class Company {
 
 
     // "SELECT * from companies"   в список ArrayList
-    public static List<Company> selectAll (Connection conn){
+    public static List<Company> selectAll (){
 
+        Connection conn = DbConnection.getIstance().getConnection();
         ArrayList<Company> result = new ArrayList <>();
 
         try ( Statement st = conn.createStatement();
@@ -78,22 +77,20 @@ public class Company {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        DbConnection.getIstance().closeConnection(conn);
         return result;
     }
 
 
-    //  Добавление Company,  3 варианта параметров
-
     public static void add( Company company ) {
         Connection conn = DbConnection.getIstance().getConnection();
         add(conn, company);
+        DbConnection.getIstance().closeConnection(conn);
     }
 
     public static void add( Connection conn, Company company ) {
         try (PreparedStatement pst = conn.prepareStatement(Constants.ADD_COMPANIES)) {
             add (pst, company);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -112,11 +109,6 @@ public class Company {
 
 
     public static void upd ( Company company ) {
-        Connection conn = DbConnection.getIstance().getConnection();
-        upd (conn, company);
-    }
-
-    public static void upd ( Connection conn, Company company ) {
 
         int idCompany = company.getIdCompany();
         String name = company.getName();
@@ -132,29 +124,17 @@ public class Company {
             if ( country != null )
                 query.append("country = '").append(country).append("', ");
 
-
             query.deleteCharAt(query.length()-2);   // удаляем последнюю запятую
 
             query.append("WHERE id_companies = ").append(idCompany).append(";");
 
             DbWork.doQuery( query.toString() );
-
         }
-
     }
 
-
-    public static void del(String id){
-
-        Connection conn = DbConnection.getIstance().getConnection();
-        del (conn, id);
-    }
-
-    public static void del ( Connection conn, String id ){
-
+    public static void del ( String id ){
         DbWork.doQuery ( "DELETE FROM companies WHERE id_companies =" + id );
     }
-
 
 
 }

@@ -27,7 +27,7 @@ public class delAircraftServlet extends HttpServlet {
 
         Connection conn = DbConnection.getIstance().getConnection();
 
-        request.setAttribute("aircraftsArrayList", Aircraft.selectAll(conn));
+        request.setAttribute("aircraftsArrayList", Aircraft.selectAll());
         request.getRequestDispatcher("view/delAircraft.jsp").forward(request, response);
     }
 }

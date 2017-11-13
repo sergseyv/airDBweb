@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created by Seyvach Serg on 01.11.2017.
- */
+
 public class Aircraft {
 
     private int idAircraft;
@@ -86,8 +84,9 @@ public class Aircraft {
 
 
     // "SELECT * from aircrafts"   в список ArrayList
-    public static List<Aircraft> selectAll (Connection conn){
+    public static List<Aircraft> selectAll(){
 
+        Connection conn = DbConnection.getIstance().getConnection();
         List <Aircraft> result = new ArrayList <>();
 
         try ( Statement st = conn.createStatement();
@@ -104,15 +103,15 @@ public class Aircraft {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        DbConnection.getIstance().closeConnection(conn);
         return result;
     }
 
 
-    //  Добавление Aircraft,  3 варианта параметров
-
     public static void add( Aircraft aircraft ) {
         Connection conn = DbConnection.getIstance().getConnection();
         add(conn, aircraft);
+        DbConnection.getIstance().closeConnection(conn);
     }
 
     public static void add( Connection conn, Aircraft aircraft ) {
@@ -131,7 +130,6 @@ public class Aircraft {
             pst.setInt(3, aircraft.maxWeightKg);
             pst.setInt(4, aircraft.maxRangeKm);
             pst.executeUpdate();
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -139,11 +137,6 @@ public class Aircraft {
 
 
     public static void upd ( Aircraft aircraft ) {
-        Connection conn = DbConnection.getIstance().getConnection();
-        upd (conn, aircraft);
-    }
-
-    public static void upd ( Connection conn, Aircraft aircraft ) {
 
         int id = aircraft.getIdAircraft();
         String name = aircraft.getName();
@@ -169,24 +162,13 @@ public class Aircraft {
             query.append("WHERE id_aircraft = ").append(id).append(";");
 
             DbWork.doQuery(query.toString());
-
         }
     }
 
+
     public static void del(String id){
-
-        Connection conn = DbConnection.getIstance().getConnection();
-        del (conn, id);
-    }
-
-    public static void del ( Connection conn, String id ){
-
         DbWork.doQuery ( "DELETE FROM aircrafts WHERE id_aircraft =" + id );
     }
-
-
-
-
 
 
 
