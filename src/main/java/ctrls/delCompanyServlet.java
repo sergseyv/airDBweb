@@ -1,6 +1,5 @@
 package ctrls;
 
-import model.DbConnection;
 import model.mainObjects.Company;
 
 import javax.servlet.ServletException;
@@ -9,11 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
 
-/**
- * Created by Seyvach Serg on 12.11.2017.
- */
+
 @WebServlet(name = "delCompanyServlet")
 public class delCompanyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,8 +19,6 @@ public class delCompanyServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        Connection conn = DbConnection.getIstance().getConnection();
 
         request.setAttribute("companiesArrayList", Company.selectAll());
         request.getRequestDispatcher("view/delCompany.jsp").forward(request, response);

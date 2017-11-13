@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-/**
- * Created by Seyvach Serg on 31.10.2017.
- */
 @WebServlet(name = "restoreDBServlet")
 public class restoreDBServlet extends HttpServlet {
 

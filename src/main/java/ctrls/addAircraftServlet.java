@@ -1,6 +1,5 @@
 package ctrls;
 
-import model.DbConnection;
 import model.Input;
 import model.mainObjects.Aircraft;
 
@@ -10,11 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
 
-/**
- * Created by Seyvach Serg on 07.11.2017.
- */
+
 @WebServlet(name = "addAircraftServlet")
 public class addAircraftServlet extends HttpServlet {
 
@@ -35,13 +31,12 @@ public class addAircraftServlet extends HttpServlet {
             if (Input.correct(maxrange)) aircraft.setMaxRangeKm(Integer.parseInt(maxrange));
             Aircraft.add(aircraft);
         }
+
         doGet(request, response);
     }
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        Connection conn = DbConnection.getIstance().getConnection();
 
         request.setAttribute("aircraftsArrayList", Aircraft.selectAll());
         request.getRequestDispatcher("view/addAircraft.jsp").forward(request, response);
