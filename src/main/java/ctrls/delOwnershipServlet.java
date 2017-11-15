@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-
+// удаление Ownership по ID
 @WebServlet(name = "delOwnershipServlet")
 public class delOwnershipServlet extends HttpServlet {
 

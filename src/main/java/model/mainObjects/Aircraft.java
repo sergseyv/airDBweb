@@ -7,7 +7,6 @@ import model.DbWork;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 public class Aircraft {
@@ -120,6 +119,7 @@ public class Aircraft {
         }
     }
 
+    // добавление новой записи в БД
     public static void add( PreparedStatement pst, Aircraft aircraft ) {
         try {
             pst.setString(1, aircraft.name);
@@ -134,6 +134,7 @@ public class Aircraft {
     }
 
 
+    // Изменение значения Aircraft в таблице, по ID
     public static void upd ( Aircraft aircraft ) {
 
         int id = aircraft.getIdAircraft();
@@ -142,6 +143,10 @@ public class Aircraft {
         int maxweight = aircraft.getMaxWeightKg();
         int maxrange = aircraft.getMaxRangeKm();
 
+        /*
+        Если пришло хотя бы одно ненулевое значение, составялем SQL-запрос
+        на UPDATE ненулевых полей
+         */
         if ( ( name != null ) || ( passengers >= 0 ) || ( maxweight >= 0 ) || ( maxrange >= 0 ) ) {
 
             StringBuilder query = new StringBuilder("UPDATE aircrafts SET ");
@@ -164,7 +169,9 @@ public class Aircraft {
     }
 
 
+    // Удаление одной записи Aircraft в таблице, по ID
     public static void del(String id){
+
         DbWork.doQuery ( "DELETE FROM aircrafts WHERE id_aircraft =" + id );
     }
 

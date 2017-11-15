@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+// Изменение значения Company в таблице, по ID
 @WebServlet(name = "updCompanyServlet")
 public class updCompanyServlet extends HttpServlet {
 
@@ -18,15 +18,21 @@ public class updCompanyServlet extends HttpServlet {
 
         Company company = new Company();
 
+        //читаем с формы введенные значения
         String id = request.getParameter("id");
         String name = request.getParameter("name");
         String country = request.getParameter("country");
 
-        company.setIdCompany(Integer.parseInt(id));
+        /*
+        Обработка введенных данных.
+        Если строковое значение не указано, отправляем NULL, как флаг того,
+        что данное поле остается без изменений.
+         */
+        company.setIdCompany(Integer.parseInt(id));// ID всегда верное, т.к. выбирается из списка
         company.setName(Input.correct(name) ? name : null);
         company.setCountry(Input.correct(country) ? country : null);
 
-        Company.upd(company);
+        Company.upd(company);// запись в базу
 
         doGet(request, response);
     }

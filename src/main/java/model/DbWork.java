@@ -6,10 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
+/*
+Класс для работы с БД
+(создание и заполнение таблиц, выполнение простых запросов)
+ */
 public class DbWork {
 
-    public static void restoreDb(){
+    public static void restoreDb(){    //// восстановление тестовой БД в первоначальный вид
         initializeDB();
         addAircrafts();
         addCompanies();
@@ -23,6 +26,7 @@ public class DbWork {
         DbConnection.getIstance().closeConnection(conn);
     }
 
+    // выполение простого запроса
     private static void doQuery(Connection conn, String sql){
         try (Statement st = conn.createStatement()) {
             st.executeUpdate(sql);
@@ -33,7 +37,7 @@ public class DbWork {
     }
 
 
-    /* пересоздаем таблицы (дропаем старые, если они есть и создаем заново) ======*/
+    // пересоздаем таблицы (дропаем старые, если они есть и создаем заново)
     private static void initializeDB(){
         doQuery(Constants.DROP_AIRCRAFTS);
         doQuery(Constants.DROP_COMPANIES);
@@ -44,8 +48,7 @@ public class DbWork {
     }
 
 
-    /* заполняем таблицу самолетов ============================================== */
-
+    // заполняем таблицу самолетов
     private static void addAircrafts() {
 
         Connection conn = DbConnection.getIstance().getConnection();
@@ -73,8 +76,7 @@ public class DbWork {
 
 
 
-    /* заполняем таблицу авиакомпаний =========================================== */
-
+    // заполняем таблицу авиакомпаний
     private static void addCompanies() {
 
         Connection conn = DbConnection.getIstance().getConnection();
@@ -99,8 +101,7 @@ public class DbWork {
     }
 
 
-
-    /* заполняем таблицу отношений "Компания - самолеты" ======================== */
+    // заполняем таблицу отношений "Компания - самолеты"
 
     private static void addOwnerships() {
 

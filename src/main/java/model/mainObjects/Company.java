@@ -7,7 +7,6 @@ import model.DbWork;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 public class Company {
@@ -92,6 +91,7 @@ public class Company {
         }
     }
 
+    // добавление новой записи в БД
     public static void add( PreparedStatement pst, Company company ) {
         try {
             pst.setString(1, company.name);
@@ -104,12 +104,17 @@ public class Company {
     }
 
 
+    // Изменение значения Company в таблице, по ID
     public static void upd ( Company company ) {
 
         int idCompany = company.getIdCompany();
         String name = company.getName();
         String country = company.getCountry();
 
+        /*
+        Если пришло хотя бы одно ненулевое значение, составялем SQL-запрос
+        на UPDATE ненулевых полей
+         */
         if ( ( name != null ) || ( country != null ) ) {
 
             StringBuilder query = new StringBuilder("UPDATE companies SET ");
@@ -128,7 +133,9 @@ public class Company {
         }
     }
 
+    // Удаление одной записи Company в таблице, по ID
     public static void del ( String id ){
+
         DbWork.doQuery ( "DELETE FROM companies WHERE id_companies =" + id );
     }
 

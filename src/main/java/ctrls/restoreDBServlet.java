@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+// восстановление тестовой БД в первоначальный вид
 @WebServlet(name = "restoreDBServlet")
 public class restoreDBServlet extends HttpServlet {
 

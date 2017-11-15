@@ -1,6 +1,8 @@
 package model;
 
-
+/*
+Константы, содержащие SQL-запросы, используемые в программе.
+ */
 public final class Constants {
 
     static final String DROP_AIRCRAFTS = "DROP TABLE IF EXISTS aircrafts; ";

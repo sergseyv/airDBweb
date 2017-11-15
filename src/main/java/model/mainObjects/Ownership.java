@@ -7,7 +7,6 @@ import model.DbWork;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 public class Ownership {
@@ -104,6 +103,7 @@ public class Ownership {
         }
     }
 
+    // добавление новой записи в БД
     public static void add( PreparedStatement pst, Ownership ownership ) {
         try {
             pst.setInt(1, ownership.idCompany);
@@ -117,6 +117,7 @@ public class Ownership {
     }
 
 
+    // Изменение значения Ownership в таблице, по ID
     public static void upd ( Ownership ownership ) {
 
         int idOwnership = ownership.getIdOwnership();
@@ -124,6 +125,10 @@ public class Ownership {
         int idAircraft = ownership.getIdAircraft();
         int quantity = ownership.getQuantity();
 
+        /*
+        Если пришло хотя бы одно ненулевое значение, составялем SQL-запрос
+        на UPDATE ненулевых полей
+         */
         if ( ( idCompany >= 0 ) || ( idAircraft >= 0 ) || ( quantity >= 0 ) ) {
 
             StringBuilder query = new StringBuilder("UPDATE ownership SET ");
@@ -144,6 +149,7 @@ public class Ownership {
     }
 
 
+    // Удаление одной записи Ownership в таблице, по ID
     public static void del ( String id ){
 
         DbWork.doQuery ( "DELETE FROM ownership WHERE id_ownership =" + id );

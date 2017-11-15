@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+//получение текущих значений из всех таблиц, для вывода на главной странице
 @WebServlet(name = "showMainPageServlet")
 public class showMainPageServlet extends HttpServlet {
 

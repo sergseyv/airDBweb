@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+// удаление Company по ID
 @WebServlet(name = "delCompanyServlet")
 public class delCompanyServlet extends HttpServlet {
 

@@ -6,6 +6,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 
+/*
+Класс реализует шаблон Singleton, и хранит в себе
+пул соединений с БД (используется пул c3p0).
+По запросу выдает connection из пула.
+ */
 public class DbConnection {
 
     private static final String URL = "jdbc:mysql://localhost:3306/aero_db";

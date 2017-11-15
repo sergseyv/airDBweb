@@ -9,9 +9,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-
+/*
+Класс реализует пример выполнения SQL запроса,
+выбор из нескольких таблиц с объединением.
+Текст запроса в константе: Constants.SELECT2
+Результат - список объектов, содержащих значения из
+результирующей таблицы.
+ */
 public class ResSelect2 {
     private String nameCompany;
     private String countryCompany;
