@@ -53,11 +53,6 @@ public class Company {
         this.idCompany = idCompany;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash( idCompany, name, country );
-    }
-
 
     // "SELECT * from companies"   в список ArrayList
     public static List<Company> selectAll (){
@@ -91,6 +86,7 @@ public class Company {
     public static void add( Connection conn, Company company ) {
         try (PreparedStatement pst = conn.prepareStatement(Constants.ADD_COMPANIES)) {
             add (pst, company);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

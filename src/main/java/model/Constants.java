@@ -1,8 +1,6 @@
 package model;
 
-/**
- * Created by Seyvach Serg on 23.10.2017.
- */
+
 public final class Constants {
 
     static final String DROP_AIRCRAFTS = "DROP TABLE IF EXISTS aircrafts; ";

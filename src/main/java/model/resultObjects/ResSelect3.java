@@ -11,9 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created by Seyvach Serg on 06.11.2017.
- */
+
 public class ResSelect3 {
     private String nameCompany;
     private String countryCompany;
@@ -37,11 +35,6 @@ public class ResSelect3 {
         return quantity;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(nameCompany, countryCompany, quantity);
-    }
-
 
     public static List<ResSelect3> selectAll (){
         Connection conn = DbConnection.getIstance().getConnection();
@@ -62,7 +55,5 @@ public class ResSelect3 {
         DbConnection.getIstance().closeConnection(conn);
         return result;
     }
-
-
 
 }

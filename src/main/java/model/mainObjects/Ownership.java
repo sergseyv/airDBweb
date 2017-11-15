@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created by Seyvach Serg on 01.11.2017.
- */
+
 public class Ownership {
     private int idOwnership;
     private int idCompany;
@@ -65,11 +63,6 @@ public class Ownership {
         this.idOwnership = idOwnership;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash( idOwnership, idCompany, idAircraft, quantity);
-    }
-
 
     // "SELECT * from ownerships"   в список ArrayList
     public static List<Ownership> selectAll(){
@@ -90,7 +83,9 @@ public class Ownership {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         DbConnection.getIstance().closeConnection(conn);
+
         return result;
     }
 
@@ -153,7 +148,5 @@ public class Ownership {
 
         DbWork.doQuery ( "DELETE FROM ownership WHERE id_ownership =" + id );
     }
-
-
 
 }

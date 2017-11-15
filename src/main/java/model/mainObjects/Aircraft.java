@@ -77,16 +77,11 @@ public class Aircraft {
     }
 
 
-    @Override
-    public int hashCode() {
-        return Objects.hash( idAircraft, name, passengers, maxWeightKg, maxRangeKm );
-    }
-
-
     // "SELECT * from aircrafts"   в список ArrayList
     public static List<Aircraft> selectAll(){
 
         Connection conn = DbConnection.getIstance().getConnection();
+
         List <Aircraft> result = new ArrayList <>();
 
         try ( Statement st = conn.createStatement();
@@ -103,7 +98,9 @@ public class Aircraft {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         DbConnection.getIstance().closeConnection(conn);
+
         return result;
     }
 
@@ -130,6 +127,7 @@ public class Aircraft {
             pst.setInt(3, aircraft.maxWeightKg);
             pst.setInt(4, aircraft.maxRangeKm);
             pst.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

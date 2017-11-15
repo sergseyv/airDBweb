@@ -26,7 +26,7 @@ public class DbWork {
     private static void doQuery(Connection conn, String sql){
         try (Statement st = conn.createStatement()) {
             st.executeUpdate(sql);
-//            st.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -45,8 +45,11 @@ public class DbWork {
 
 
     /* заполняем таблицу самолетов ============================================== */
+
     private static void addAircrafts() {
+
         Connection conn = DbConnection.getIstance().getConnection();
+
         try {
             PreparedStatement pst = conn.prepareStatement(Constants.ADD_AIRCRAFTS);
             Aircraft.add ( pst, new Aircraft("Airbus A319", 156, 75000, 6850 ) );
@@ -60,16 +63,22 @@ public class DbWork {
             Aircraft.add ( pst, new Aircraft("Boeing 767-200ER", 255, 179000, 12200 ) );
             Aircraft.add ( pst, new Aircraft("Boeing 777-200ER", 400, 297560, 14260 ) );
             Aircraft.add ( pst, new Aircraft("Boeing 787 Dreamliner", 290, 254000, 14140 ) );
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         DbConnection.getIstance().closeConnection(conn);
     }
 
 
+
     /* заполняем таблицу авиакомпаний =========================================== */
+
     private static void addCompanies() {
+
         Connection conn = DbConnection.getIstance().getConnection();
+
         try {
             PreparedStatement pst = conn.prepareStatement(Constants.ADD_COMPANIES);
             Company.add(pst, new Company("Emirates", "United Arab Emirates"));
@@ -81,16 +90,22 @@ public class DbWork {
             Company.add(pst, new Company("American Airlines", "USA"));
             Company.add(pst, new Company("Alitalia", "Italy"));
             Company.add(pst, new Company("Ryanair", "Ireland"));
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         DbConnection.getIstance().closeConnection(conn);
     }
 
 
+
     /* заполняем таблицу отношений "Компания - самолеты" ======================== */
+
     private static void addOwnerships() {
+
         Connection conn = DbConnection.getIstance().getConnection();
+
         try {
             PreparedStatement pst = conn.prepareStatement(Constants.ADD_OWNERSHIP);
             Ownership.add(pst, new Ownership(1, 6, 23));
@@ -122,9 +137,11 @@ public class DbWork {
             Ownership.add(pst, new Ownership(9, 2, 43));
             Ownership.add(pst, new Ownership(9, 7, 15));
             Ownership.add(pst, new Ownership(9, 11, 29));
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         DbConnection.getIstance().closeConnection(conn);
     }
 

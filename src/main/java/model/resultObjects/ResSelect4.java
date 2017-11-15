@@ -11,9 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created by Seyvach Serg on 06.11.2017.
- */
+
 public class ResSelect4 {
     private String nameCompany;
     private String countryCompany;
@@ -43,11 +41,6 @@ public class ResSelect4 {
         return passengers;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(nameCompany, countryCompany, quantity, passengers);
-    }
-
 
     public static List<ResSelect4> selectAll (){
 
@@ -70,7 +63,5 @@ public class ResSelect4 {
         DbConnection.getIstance().closeConnection(conn);
         return result;
     }
-
-
 
 }

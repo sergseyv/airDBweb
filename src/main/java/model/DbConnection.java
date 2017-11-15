@@ -48,6 +48,7 @@ public class DbConnection {
         try {
             conn = poolDS.getConnection();
             conn.setAutoCommit(true);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -64,4 +65,6 @@ public class DbConnection {
             }
         }
     }
+
+
 }

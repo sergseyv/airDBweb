@@ -11,9 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created by Seyvach Serg on 06.11.2017.
- */
+
 public class ResSelect2 {
     private String nameCompany;
     private String countryCompany;
@@ -47,11 +45,6 @@ public class ResSelect2 {
 
     public int getQuantity() {
         return quantity;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nameCompany, countryCompany, nameAircraft, maxRangeAircraft, quantity);
     }
 
 

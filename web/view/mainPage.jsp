@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!-- Created by Seyvach Serg on 01.11.2017 -->
+
 <html>
 <head>
     <title>Database "AVIA" - Main Page</title>
