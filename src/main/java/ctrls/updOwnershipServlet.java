@@ -13,6 +13,7 @@ import java.io.IOException;
 
 @WebServlet(name = "updOwnershipServlet")
 public class updOwnershipServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Ownership ownership = new Ownership();

@@ -12,6 +12,7 @@ import java.io.IOException;
 
 @WebServlet(name = "delCompanyServlet")
 public class delCompanyServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Company.del(request.getParameter("id"));

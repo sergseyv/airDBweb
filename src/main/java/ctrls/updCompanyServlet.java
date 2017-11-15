@@ -13,8 +13,8 @@ import java.io.IOException;
 
 @WebServlet(name = "updCompanyServlet")
 public class updCompanyServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Company company = new Company();
 
@@ -29,7 +29,6 @@ public class updCompanyServlet extends HttpServlet {
         Company.upd(company);
 
         doGet(request, response);
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

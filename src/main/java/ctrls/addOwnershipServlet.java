@@ -19,15 +19,16 @@ public class addOwnershipServlet extends HttpServlet {
         String id_companies = request.getParameter("id_companies");
 
         if (Input.correct(id_companies)) {
-
             Ownership ownership = new Ownership();
             ownership.setIdCompany(Integer.parseInt(id_companies));
 
             String id_aircraft = request.getParameter("id_aircraft");
             String quantity = request.getParameter("quantity");
 
-            if (Input.correct(id_aircraft)) ownership.setIdAircraft (Integer.parseInt(id_aircraft));
-            if (Input.correct(quantity)) ownership.setQuantity (Integer.parseInt(quantity));
+            if (Input.correct(id_aircraft))
+                ownership.setIdAircraft (Integer.parseInt(id_aircraft));
+            if (Input.correct(quantity))
+                ownership.setQuantity (Integer.parseInt(quantity));
 
             Ownership.add(ownership);
         }
@@ -40,6 +41,5 @@ public class addOwnershipServlet extends HttpServlet {
 
         request.setAttribute("ownershipArrayList", Ownership.selectAll());
         request.getRequestDispatcher("view/addOwnership.jsp").forward(request, response);
-
     }
 }

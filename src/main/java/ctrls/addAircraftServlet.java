@@ -29,6 +29,7 @@ public class addAircraftServlet extends HttpServlet {
             if (Input.correct(passengers)) aircraft.setPassengers(Integer.parseInt(passengers));
             if (Input.correct(maxweight)) aircraft.setMaxWeightKg(Integer.parseInt(maxweight));
             if (Input.correct(maxrange)) aircraft.setMaxRangeKm(Integer.parseInt(maxrange));
+
             Aircraft.add(aircraft);
         }
 
